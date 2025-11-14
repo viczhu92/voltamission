@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+*.DS_Store
+
+# Node modules (too large for git)
+node_modules/
+package-lock.json
+
+# Build artifacts (only keep source code)
+**/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
