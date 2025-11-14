@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/logo-vm.png" />
   <title>VoltaMission – AI-Powered Battery Manufacturing Consulting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
@@ -143,6 +144,64 @@
       color: var(--text);
       border-color: rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Dropdown menu */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-arrow {
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 200px;
+      background: rgba(17, 18, 26, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-item {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: all 0.15s ease;
+    }
+
+    .nav-dropdown-item:hover {
+      background: rgba(10, 132, 255, 0.1);
+      color: var(--text);
     }
 
     .nav-cta {
@@ -786,6 +845,15 @@
           <a href="#services" class="nav-link">Services</a>
           <a href="#cases" class="nav-link">Case examples</a>
           <a href="#about" class="nav-link">About</a>
+          <div class="nav-dropdown">
+            <div class="nav-link nav-dropdown-toggle">
+              <span>Useful Tools</span>
+              <span class="nav-dropdown-arrow">▼</span>
+            </div>
+            <div class="nav-dropdown-menu">
+              <a href="/r2r-sim/" class="nav-dropdown-item" target="_blank" rel="noopener noreferrer">R2R Simulator</a>
+            </div>
+          </div>
           <a href="#contact" class="nav-link nav-cta">
             <span>Book a call</span>
           </a>
