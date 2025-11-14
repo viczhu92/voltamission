@@ -68,20 +68,23 @@ export function simulateTension(nodes, zones, lineLength, params) {
 
     // 如果这个 zone 的 from 是 PITCH，则说明它是一个新张力区的起点
     const fromType = nodeTypeById[z.from.id];
+    const toType = nodeTypeById[z.to.id];
     if (fromType === "PITCH" && globalIdx > 0) {
       groupIndex += 1;
       localIdx = 0;
     }
 
+    // Check if this zone touches a Dancer (for friction and tension logic)
+    const touchesDancer = fromType === "DANCER" || toType === "DANCER";
+
     // 目标应变 / 张力：在张力区内根据 localIdx 递增
+    // Dancer zones: skip in localIdx counting to maintain flat tension
     const eps_set = baseStrain0 + localIdx * strainStep;
     const T_set = EA * eps_set;
 
     // 阻尼：有 dancer 的 section 阻尼更大，张力更稳
     let damping = 4;
-    const hasDancer =
-      dancerIds.includes(z.from.id) || dancerIds.includes(z.to.id);
-    if (hasDancer) damping *= 2.5;
+    if (touchesDancer) damping *= 2.5;
 
     const strainGain = 1.0 / length_m; // 预留接口给 dv 使用
 
@@ -94,13 +97,17 @@ export function simulateTension(nodes, zones, lineLength, params) {
       T_set,
       damping,
       strainGain,
+      touchesDancer,
       index: globalIdx,   // 全局 section 索引
       groupIndex,         // 属于第几个张力区（0,1,2,...）
       localIndex: localIdx,
     });
 
     // 下一段在同一张力区内，localIdx + 1
-    localIdx += 1;
+    // Skip incrementing for Dancer zones to maintain flat tension
+    if (!touchesDancer) {
+      localIdx += 1;
+    }
   });
 
   // ===== 状态变量：每个 section 的 ε 和 T =====
