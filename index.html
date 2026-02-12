@@ -504,6 +504,11 @@
       .grid-3 {
         grid-template-columns: 1fr;
       }
+
+      .business-model-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
     }
 
     .card {
@@ -798,30 +803,203 @@
     }
 
     @media (max-width: 600px) {
+      .shell {
+        padding: 0 16px;
+      }
+
       .nav-inner {
         padding-inline: 16px;
       }
 
+      .nav-links {
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .nav-link {
+        padding: 5px 8px;
+      }
+
+      .nav-dropdown-toggle {
+        font-size: 14px;
+      }
+
+      .nav-dropdown-menu {
+        left: auto;
+        right: 0;
+        min-width: 180px;
+      }
+
+      #business-model .card {
+        padding: 24px 20px !important;
+      }
+
       .hero {
-        padding-top: 40px;
+        padding: 40px 0 60px;
+      }
+
+      .hero-title {
+        font-size: clamp(32px, 8vw, 46px);
+        margin-bottom: 16px;
+      }
+
+      .hero-subtitle {
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .hero-note {
+        font-size: 13px;
       }
 
       .hero-right {
         padding: 16px 14px 16px;
       }
 
+      .hero-metric-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .metric-value {
+        font-size: 18px;
+      }
+
+      section {
+        padding: 50px 0;
+      }
+
       .section-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .section-tagline {
+        font-size: 15px;
+        max-width: 100%;
+      }
+
+      .pill-label {
+        font-size: 12px;
+      }
+
+      .btn {
+        padding: 11px 18px;
+        font-size: 14px;
+      }
+
+      .card {
+        padding: 20px 18px 18px;
+      }
+
+      .card-title {
+        font-size: 16px;
+      }
+
+      .card-body {
+        font-size: 15px;
+      }
+
+      .bullet-list {
+        font-size: 15px;
+      }
+
+      .case-title {
+        font-size: 18px;
+      }
+
+      .case-body {
+        font-size: 15px;
+      }
+
+      .case-small {
+        padding: 12px;
+        font-size: 15px;
+      }
+
+      .case-small-title {
+        font-size: 15px;
+      }
+
+      .about-text {
+        font-size: 15px;
+      }
+
+      .about-info-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
       }
 
       .contact-card {
+        flex-direction: column;
         align-items: flex-start;
+        padding: 20px 18px;
+      }
+
+      .contact-text-title {
+        font-size: 16px;
+      }
+
+      .contact-text-body {
+        font-size: 15px;
       }
 
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
+      }
+    }
+
+    /* Extra small screens (iPhone SE, etc.) */
+    @media (max-width: 400px) {
+      .shell {
+        padding: 0 12px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hero-subtitle {
+        font-size: 14px;
+      }
+
+      .chip {
+        font-size: 11px;
+        padding: 5px 9px;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      #business-model .card {
+        padding: 20px 16px !important;
       }
     }
   </style>
@@ -959,7 +1137,7 @@
             </p>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+          <div class="business-model-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
             <!-- VC Track -->
             <article class="card" style="padding: 32px;">
               <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
