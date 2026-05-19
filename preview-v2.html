@@ -239,15 +239,13 @@ section{position:relative;padding:130px 0;}
   border-left:1px solid var(--line);border-right:1px solid var(--line);
   position:relative;
 }
-.flow-core .ring{
-  width:74px;height:74px;border:1px solid var(--accent);
-  transform:rotate(45deg);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 38px var(--accent-glow);
+.flow-core .core-logo{
+  width:76px;height:76px;
+  animation:logoglow 3s ease-in-out infinite;
 }
-.flow-core .ring::before{
-  content:"";width:26px;height:26px;background:var(--accent);
-  box-shadow:0 0 22px var(--accent);
-  animation:pulse 2.6s ease-in-out infinite;
+@keyframes logoglow{
+  0%,100%{filter:drop-shadow(0 0 6px var(--accent));}
+  50%{filter:drop-shadow(0 0 22px var(--accent));}
 }
 .flow-core .cl{margin-top:18px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;}
 @media(max-width:760px){
@@ -610,7 +608,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
           for North American manufacturers building real lines.</p>
       </div>
       <div class="flow-core">
-        <div class="ring"></div>
+        <img src="logo-vm.png" alt="VoltaMission" class="core-logo" />
         <div class="cl">VoltaMission</div>
       </div>
       <div class="flow-node">
