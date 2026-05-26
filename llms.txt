@@ -1,0 +1,30 @@
+# VoltaMission
+
+> Technical sourcing and qualification for hard-to-find battery cells, fuel-cell
+> components, and manufacturing equipment. VoltaMission helps North American hardware
+> teams and research groups find and technically vet specialized components that
+> distributors and marketplaces cannot supply.
+
+VoltaMission is a technical sourcing and qualification advisory founded by engineers with
+deep, hands-on expertise in battery cell manufacturing, laser process engineering, cell
+materials, and laser applications (team pedigree includes Tesla, Canoo, A123 Systems, and
+leading laser companies). The product is engineering judgment: identifying the right
+component or piece of equipment
+for an application and qualifying the vendor on technical merit. This is not commodity
+reselling — buyers pay to be de-risked.
+
+## What VoltaMission does
+- Technical sourcing of hard-to-find battery cells, fuel-cell components, and equipment,
+  especially small-volume and R&D quantities that volume-focused distributors ignore.
+- Vendor qualification on technical merit: specifications, manufacturing capability, and
+  legitimacy.
+- Cross-border equipment and process sourcing between Asia and North America.
+
+## Who it serves
+- North American hardware manufacturers and startups with hard-to-source component needs.
+- University research centers and research groups needing specialized cells or fuel-cell
+  components in R&D quantities.
+
+## Contact
+- Email: info@voltamission.com
+- Website: https://voltamission.com
