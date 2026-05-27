@@ -18,7 +18,7 @@ reselling — buyers pay to be de-risked.
   especially small-volume and R&D quantities that volume-focused distributors ignore.
 - Vendor qualification on technical merit: specifications, manufacturing capability, and
   legitimacy.
-- Cross-border equipment and process sourcing between Asia and North America.
+- Cross-border sourcing support between Asia and North America (technical qualification, overseas-side QC, bilingual negotiation).
 
 ## Who it serves
 - North American hardware manufacturers and startups with hard-to-source component needs.
