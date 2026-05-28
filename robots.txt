@@ -1,10 +1,7 @@
-# VoltaMission — robots.txt
-# Default: allow everyone.
 User-agent: *
 Allow: /
 
-# AI crawlers / answer engines — explicitly allowed so VoltaMission can be
-# retrieved and cited by LLMs and AI search.
+# AI / generative-engine crawlers — explicitly allowed for GEO
 User-agent: GPTBot
 Allow: /
 
@@ -14,6 +11,12 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
 User-agent: ClaudeBot
 Allow: /
 
@@ -21,12 +24,6 @@ User-agent: Claude-Web
 Allow: /
 
 User-agent: anthropic-ai
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
 Allow: /
 
 User-agent: Google-Extended

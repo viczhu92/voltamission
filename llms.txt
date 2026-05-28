@@ -1,30 +1,21 @@
 # VoltaMission
 
-> Technical sourcing and qualification for hard-to-find battery cells, fuel-cell
-> components, and manufacturing equipment. VoltaMission helps North American hardware
-> teams and research groups find and technically vet specialized components that
-> distributors and marketplaces cannot supply.
-
-VoltaMission is a technical sourcing and qualification advisory founded by engineers with
-deep, hands-on expertise in battery cell manufacturing, laser process engineering, cell
-materials, and laser applications (team pedigree includes Tesla, Canoo, A123 Systems, and
-leading laser companies). The product is engineering judgment: identifying the right
-component or piece of equipment
-for an application and qualifying the vendor on technical merit. This is not commodity
-reselling — buyers pay to be de-risked.
+> Technical sourcing and qualification for battery cells, fuel-cell components, and equipment. North American hardware teams and research groups hire VoltaMission to find and technically vet hard-to-source parts that distributors won't supply. Not a reseller — clients pay for engineering judgment from people who have built cell and laser manufacturing lines.
 
 ## What VoltaMission does
-- Technical sourcing of hard-to-find battery cells, fuel-cell components, and equipment,
-  especially small-volume and R&D quantities that volume-focused distributors ignore.
-- Vendor qualification on technical merit: specifications, manufacturing capability, and
-  legitimacy.
-- Cross-border sourcing support between Asia and North America (technical qualification, overseas-side QC, bilingual negotiation).
+- Hard-to-find battery cell & component sourcing (non-catalog, small / R&D volume)
+- Technical vendor qualification (specs, manufacturing capability, samples, NDAA-aware origin compliance)
+- Cross-border sourcing support (NA + Asia, overseas QC, bilingual EN/Mandarin negotiation)
 
-## Who it serves
-- North American hardware manufacturers and startups with hard-to-source component needs.
-- University research centers and research groups needing specialized cells or fuel-cell
-  components in R&D quantities.
+## Who it's for
+- Hardware startups stuck sourcing non-catalog or allocation-gated cells
+- Research groups needing small / R&D-volume parts with provenance documentation
+- North American manufacturers sourcing from Asia who need a trusted technical intermediary
 
-## Contact
-- Email: info@voltamission.com
-- Website: https://voltamission.com
+## Key pages
+- Home: https://voltamission.com/
+- Contact: info@voltamission.com
+- Free tools: Laser Parameter Calculator, Speed Match Simulator, Tension Control Simulator
+
+## Location
+Toronto, Canada. Serves North America and Asia.

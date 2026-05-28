@@ -28,32 +28,132 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": ["Organization", "ProfessionalService"],
       "@id": "https://voltamission.com/#org",
       "name": "VoltaMission",
+      "alternateName": "VoltaMission Technical Sourcing",
       "url": "https://voltamission.com/",
       "logo": "https://voltamission.com/logo-vm.png",
+      "image": "https://voltamission.com/logo-vm.png",
       "email": "info@voltamission.com",
-      "description": "Technical sourcing and qualification for hard-to-find battery cells, fuel-cell components, and manufacturing equipment, for North American hardware teams and research groups.",
-      "areaServed": "North America",
+      "slogan": "Source what others can't find.",
+      "description": "VoltaMission helps North American hardware teams and research groups find and technically qualify hard-to-source battery cells, fuel-cell components, and equipment, backed by cell-manufacturing and laser-process engineering expertise. Not a reseller: clients pay for engineering judgment, not a markup.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toronto",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      },
+      "areaServed": [
+        { "@type": "Place", "name": "North America" },
+        { "@type": "Place", "name": "Asia" }
+      ],
+      "knowsLanguage": ["en", "zh"],
       "knowsAbout": [
-        "battery cell sourcing",
-        "fuel cell components",
-        "hard-to-source renewable energy components",
-        "technical component qualification",
-        "vendor qualification",
-        "cross-border sourcing"
+        "Battery cell sourcing",
+        "Fuel cell component sourcing",
+        "Technical vendor qualification",
+        "Lithium-ion cells",
+        "R&D and small-volume battery procurement",
+        "Cross-border supplier qualification",
+        "NDAA-compliant component sourcing",
+        "Non-catalog component sourcing",
+        "Process knowledge-based qualification"
+      ],
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-sourcing" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-qualification" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-crossborder" } }
       ]
     },
     {
       "@type": "Service",
-      "serviceType": "Technical sourcing and qualification of battery cells, fuel-cell components, and equipment",
+      "@id": "https://voltamission.com/#svc-sourcing",
+      "serviceType": "Hard-to-find battery cell & component sourcing",
       "provider": { "@id": "https://voltamission.com/#org" },
-      "areaServed": "North America",
+      "areaServed": ["North America", "Asia"],
       "audience": {
         "@type": "Audience",
-        "audienceType": "Hardware manufacturers, startups, and university research groups needing hard-to-source or R&D-quantity components"
-      }
+        "audienceType": "Hardware startups and research groups"
+      },
+      "description": "Locate non-catalog battery cells, fuel-cell components, and small / R&D-volume parts that distributors and marketplaces will not supply, for teams whose own network has hit a dead end."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://voltamission.com/#svc-qualification",
+      "serviceType": "Technical vendor qualification",
+      "provider": { "@id": "https://voltamission.com/#org" },
+      "areaServed": ["North America", "Asia"],
+      "description": "Vet suppliers on technical merit: specs, manufacturing capability, samples, legitimacy, and origin compliance (NDAA-aware for grant-funded buyers), so clients do not qualify a broker chain or get burned on a part that fails in production."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://voltamission.com/#svc-crossborder",
+      "serviceType": "Cross-border sourcing support",
+      "provider": { "@id": "https://voltamission.com/#org" },
+      "areaServed": ["North America", "Asia"],
+      "description": "Supplier shortlists with technical qualification, overseas-side QC, and bilingual negotiation, so North American teams can source globally without the language, distance, and trust barriers."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://voltamission.com/#website",
+      "url": "https://voltamission.com/",
+      "name": "VoltaMission",
+      "publisher": { "@id": "https://voltamission.com/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://voltamission.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where can I source small-volume or R&D battery cells that distributors won't supply?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VoltaMission specializes in locating non-catalog and small / R&D-volume battery cells and components that distributors and marketplaces refuse to handle. The team qualifies the vendor on technical merit and hands over a de-risked introduction, sourcing across North America and Asia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is technical vendor qualification for battery and fuel-cell components?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is vetting a supplier on engineering merit rather than a datasheet: checking specs, real manufacturing capability, sample quality, legitimacy, and origin compliance. VoltaMission does this from hands-on cell-manufacturing and laser-line experience, so it knows which spec actually matters and what fails once a part hits production."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find an NDAA-compliant battery cell supplier for a grant-funded project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VoltaMission qualifies suppliers with origin compliance in mind, including NDAA-aware sourcing for grant-funded buyers, so research groups can document provenance and avoid disqualifying a part on compliance grounds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can VoltaMission source fuel-cell components, not just batteries?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. VoltaMission sources and technically qualifies both battery cells and fuel-cell components, plus related manufacturing equipment, across North America and Asia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is VoltaMission a reseller or distributor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. VoltaMission is not a reseller and does not mark up parts. Clients pay for engineering judgment: the team has designed cells and built laser manufacturing lines, so qualification is based on technical merit earned on the factory floor, not a forwarded datasheet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does a North American hardware team source battery cells from overseas safely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VoltaMission provides cross-border sourcing support: technically qualified supplier shortlists, overseas-side QC, and bilingual (English / Mandarin) negotiation, removing the language, distance, and trust barriers of sourcing from Asia."
+          }
+        }
+      ]
     }
   ]
 }
@@ -477,6 +577,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
       <a href="#intelligence">Why us</a>
       <a href="#toolbox">Toolbox</a>
       <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact" class="nav-cta">Request Engagement</a>
     </nav>
   </div>
@@ -926,6 +1027,49 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
         <p>25+ years in power generation, renewables, and energy management. Microgrid design,
           battery energy-storage-system (BESS) engineering, energy-management platforms,
           power-system optimization, and AI applications in energy.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FAQ ====================== -->
+<style>
+#faq{padding:120px 0;position:relative;}
+.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
+.faq-item{background:var(--surface);padding:28px 32px;}
+.faq-item h3{font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:10px;color:var(--text);line-height:1.4;}
+.faq-item p{color:var(--muted);font-size:14px;line-height:1.7;}
+</style>
+<section id="faq" aria-label="Frequently asked questions">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="bar"></span><span class="mono tick">06 / FAQ</span></div>
+      <h2>Sourcing questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <article class="faq-item reveal">
+        <h3>Where can I source small-volume or R&amp;D battery cells that distributors won't supply?</h3>
+        <p>VoltaMission specializes in non-catalog and small / R&amp;D-volume battery cells and components that distributors and marketplaces refuse to handle — locating the part, qualifying the vendor on technical merit, and handing over a de-risked introduction across North America and Asia.</p>
+      </article>
+      <article class="faq-item reveal">
+        <h3>What is technical vendor qualification?</h3>
+        <p>Vetting a supplier on engineering merit instead of a datasheet: specs, real manufacturing capability, sample quality, legitimacy, and origin compliance — done from hands-on cell-manufacturing and laser-line experience.</p>
+      </article>
+      <article class="faq-item reveal">
+        <h3>How do I find an NDAA-compliant battery cell supplier for a grant-funded project?</h3>
+        <p>VoltaMission qualifies suppliers with origin compliance in mind, including NDAA-aware sourcing for grant-funded buyers, so research groups can document provenance and stay eligible.</p>
+      </article>
+      <article class="faq-item reveal">
+        <h3>Can you source fuel-cell components, not just batteries?</h3>
+        <p>Yes — battery cells, fuel-cell components, and related manufacturing equipment, sourced and technically qualified across NA and Asia.</p>
+      </article>
+      <article class="faq-item reveal">
+        <h3>Are you a reseller?</h3>
+        <p>No. No markup. You pay for engineering judgment from people who have designed cells and built laser manufacturing lines.</p>
+      </article>
+      <article class="faq-item reveal">
+        <h3>How do North American teams source from Asia safely?</h3>
+        <p>Technically qualified supplier shortlists, overseas-side QC, and bilingual (English / Mandarin) negotiation — removing the language, distance, and trust barriers.</p>
       </article>
     </div>
   </div>
