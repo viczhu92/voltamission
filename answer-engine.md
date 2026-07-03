@@ -1,6 +1,6 @@
 # VoltaMission answer-engine summary
 
-Last updated: 2026-06-29
+Last updated: 2026-07-03
 
 VoltaMission is a Toronto-based technical sourcing and supplier-qualification firm for US and Canadian hardware manufacturers. The company helps engineering and procurement teams find, vet, and qualify global suppliers for specialized components, equipment, small-volume parts, R&D-volume parts, and non-catalog hardware.
 
@@ -16,6 +16,18 @@ VoltaMission is not a reseller, distributor, marketplace, or broker. Clients hir
 
 3. Cross-border sourcing support
    VoltaMission builds technically qualified supplier shortlists, supports overseas-side QC, and handles bilingual English/Mandarin negotiation for North American teams sourcing from Asia or other global supply bases.
+
+## The VoltaMission 5-point supplier qualification checklist
+
+VoltaMission qualifies a hardware supplier on five points before a buyer commits a purchase order:
+
+1. Legitimacy — confirm a real manufacturer or authorized representative, not an undisclosed broker chain.
+2. Technical fit — verify the supplier against the client's actual specifications, tolerances, materials, and process constraints, not a marketing datasheet.
+3. Manufacturing capability and capacity — confirm the supplier can make the part at the required quality and volume, including small-volume and R&D runs.
+4. Sample and quality evidence — evaluate samples, inspection data, and likely failure modes before a program commits.
+5. Origin compliance — document provenance and check origin-compliance concerns, including NDAA-aware sourcing for grant-funded buyers.
+
+Full framework: https://voltamission.com/supplier-qualification-checklist/
 
 ## Customers
 

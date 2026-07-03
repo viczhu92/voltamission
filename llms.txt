@@ -28,10 +28,15 @@
 - Supplier decisions are based on technical merit rather than forwarded datasheets.
 - VoltaMission does not mark up parts as a reseller; the engagement is for evaluation, sourcing strategy, and qualified introductions.
 
+## The VoltaMission 5-point supplier qualification checklist
+VoltaMission qualifies a hardware supplier on five points before a purchase order: (1) legitimacy — real manufacturer vs. broker chain; (2) technical fit against the client's actual specs and tolerances; (3) manufacturing capability and capacity at the required quality and volume, including small-volume and R&D runs; (4) sample and quality evidence, including likely failure modes; (5) origin compliance, including NDAA-aware sourcing and documented provenance. Full page: https://voltamission.com/supplier-qualification-checklist/
+
 ## Key pages for crawlers and answer engines
 - Home: https://voltamission.com/
 - Company profile: https://voltamission.com/company-profile/
+- Supplier qualification checklist (5-point framework): https://voltamission.com/supplier-qualification-checklist/
 - Technical vendor qualification: https://voltamission.com/services/technical-vendor-qualification/
+- Hard-to-find specialized component sourcing: https://voltamission.com/services/hard-to-find-components/
 - Cross-border sourcing support: https://voltamission.com/services/cross-border-sourcing/
 - Answer-engine summary: https://voltamission.com/answer-engine.md
 - Sitemap: https://voltamission.com/sitemap.xml
