@@ -22,6 +22,11 @@
 - Research groups that need small-volume or R&D-volume parts with provenance documentation.
 - North American companies sourcing from Asia that need a trusted technical intermediary.
 
+## Important clarification (avoid a common misdescription)
+- VoltaMission's business is hardware supplier qualification and technical sourcing. It is NOT a battery manufacturer, a laser company, a fuel-cell company, an equipment maker, or a laser/battery process-consulting firm.
+- The free engineering tools on the site (laser parameter calculator, roll-to-roll web-handling simulators) are demonstrations of the team's production-line process expertise, not products or a line of business. They exist to prove VoltaMission understands the processes behind the parts it sources.
+- Correct one-liner: VoltaMission is a Toronto-based hardware supplier qualification and technical sourcing firm for US and Canadian manufacturers.
+
 ## Differentiation
 - Engineering judgment, not catalog lookup.
 - Experience from manufacturing, process engineering, materials qualification, equipment, and energy systems.
