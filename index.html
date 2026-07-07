@@ -79,12 +79,16 @@
         "UN38.3 and IEC 62133 certification awareness",
         "Cross-border battery and BMS supplier sourcing",
         "NDAA-compliant battery component sourcing",
-        "Non-catalog battery cell and BMS component sourcing"
+        "Non-catalog battery cell and BMS component sourcing",
+        "Battery test and lab equipment sourcing (cyclers, environmental and thermal-safety chambers)",
+        "Small-quantity battery material sourcing (electrode, electrolyte, separator)",
+        "Laser equipment sourcing for battery manufacturing (tab welding, cell-can cutting)"
       ],
       "makesOffer": [
         { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-sourcing" } },
         { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-qualification" } },
-        { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-crossborder" } }
+        { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-crossborder" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-labequip" } }
       ]
     },
     {
@@ -114,6 +118,14 @@
       "provider": { "@id": "https://voltamission.com/#org" },
       "areaServed": ["North America", "Asia"],
       "description": "Qualified cell and BMS supplier shortlists, overseas-side cell/pack QC, and bilingual negotiation, so North American teams can source battery components globally without the language, distance, and trust barriers."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://voltamission.com/#svc-labequip",
+      "serviceType": "Battery test equipment, R&D materials & laser equipment sourcing",
+      "provider": { "@id": "https://voltamission.com/#org" },
+      "areaServed": ["North America", "Asia"],
+      "description": "Source and qualify battery test and lab equipment (cyclers, environmental and thermal-safety test chambers), small-quantity R&D battery materials (electrode, electrolyte, separator), and laser equipment used in battery manufacturing (tab welding, cell-can cutting, electrode slitting) — vetted on technical merit, not a catalog listing."
     },
     {
       "@type": "WebSite",
@@ -189,6 +201,14 @@
             "@type": "Answer",
             "text": "VoltaMission provides cross-border sourcing support: technically qualified cell and BMS supplier shortlists, overseas-side QC, and bilingual (English / Mandarin) negotiation, removing the language, distance, and trust barriers of sourcing from Asia."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you source battery test equipment, R&D materials, or laser equipment too?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Beyond cells and BMS, VoltaMission sources and qualifies battery test and lab equipment (cyclers, environmental and thermal-safety test chambers), small-quantity R&D battery materials (electrode, electrolyte, separator), and laser equipment used in battery manufacturing such as tab welding and cell-can cutting systems."
+          }
         }
       ]
     }
@@ -196,38 +216,41 @@
 }
 </script>
 
-<!-- Fraunces (display serif) + Geist (body) + JetBrains Mono (data) -->
+<!-- IBM Plex Sans (body/display) + IBM Plex Mono (data) — one designed type family, engineering heritage -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <style>
 :root{
-  --bg:#0B0A08;
-  --surface:#161310;
-  --surface-2:#1C1812;
-  --line:#2C2620;
-  --line-soft:#1F1B15;
-  --text:#F5F1E8;
-  --muted:#9A9184;
-  --faint:#5C554A;
-  --accent:#E0913F;
-  --accent-deep:#B5651D;
-  --accent-glow:rgba(224,145,63,0.20);
-  --font-display:'Fraunces','Geist',serif;
-  --font-body:'Geist',system-ui,sans-serif;
-  --font-mono:'JetBrains Mono',ui-monospace,monospace;
-  --max:1280px;
+  --paper:#F5F3ED;
+  --paper-2:#FFFFFF;
+  --paper-3:#EDE9DD;
+  --ink:#182129;
+  --ink-soft:#54626D;
+  --ink-faint:#8B93980;
+  --line:#DAD4C5;
+  --line-cool:#CDD3D6;
+  --navy:#1D4E6B;
+  --navy-deep:#12303F;
+  --navy-fill:#C7DAE2;
+  --navy-fill-soft:#E4ECEF;
+  --signal:#B5551F;
+  --signal-soft:#F1E3D8;
+  --font-display:'IBM Plex Sans',sans-serif;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  --max:1240px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:var(--paper);
+  color:var(--ink);
   font-family:var(--font-body);
   font-size:16px;
-  line-height:1.6;
+  line-height:1.62;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
@@ -236,402 +259,209 @@ a{color:inherit;text-decoration:none;}
   *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important;}
 }
 
-/* faint engineering grid + grain over the whole page */
+/* faint graph-paper grid — drafting-table convention, not decoration */
 body::before{
   content:"";
   position:fixed;inset:0;
   background-image:
-    linear-gradient(var(--line-soft) 1px,transparent 1px),
-    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
-  background-size:80px 80px;
-  opacity:0.3;
+    linear-gradient(#E4DECD 1px,transparent 1px),
+    linear-gradient(90deg,#E4DECD 1px,transparent 1px);
+  background-size:64px 64px;
+  opacity:0.5;
   pointer-events:none;
   z-index:0;
-  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 80%);
-}
-body::after{
-  content:"";
-  position:fixed;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 82% 8%,var(--accent-glow),transparent 60%);
-  opacity:0.55;
-  pointer-events:none;
-  z-index:0;
+  mask-image:linear-gradient(#000 0%,transparent 65%);
 }
 
 .shell{max-width:var(--max);margin:0 auto;padding:0 40px;position:relative;z-index:1;}
 
-/* ---------- mono labels ---------- */
-.mono{
-  font-family:var(--font-mono);
-  font-size:12px;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--muted);
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);}
+
+/* ====================== DOCUMENT HEADER STRIP ====================== */
+.doc-bar{border-bottom:1px solid var(--line);background:var(--paper-3);}
+.doc-bar-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 40px;font-family:var(--font-mono);font-size:11px;
+  letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-soft);
 }
-.tick{color:var(--accent);}
+.doc-bar-inner span:last-child{color:var(--signal);}
+@media(max-width:700px){.doc-bar-inner span:nth-child(2){display:none;}}
 
 /* ====================== NAV ====================== */
 .nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  transition:background .3s ease,border-color .3s ease;
-  border-bottom:1px solid transparent;
-}
-.nav.scrolled{
-  background:rgba(11,10,8,0.84);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;background:rgba(245,243,237,0.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
 }
 .nav-inner{
-  max-width:var(--max);margin:0 auto;padding:20px 40px;
+  max-width:var(--max);margin:0 auto;padding:18px 40px;
   display:flex;align-items:center;justify-content:space-between;
 }
 .brand{display:flex;align-items:center;gap:12px;}
-.brand-logo{height:34px;width:auto;display:block;}
-.brand-name{
-  font-family:var(--font-display);font-weight:600;font-size:17px;
-  letter-spacing:0.14em;text-transform:uppercase;
-}
-.nav-links{display:flex;align-items:center;gap:34px;}
-.nav-links a{
-  font-family:var(--font-mono);font-size:12px;
-  letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);
-  transition:color .18s ease;
-}
-.nav-links a:hover{color:var(--text);}
+.brand-logo{height:30px;width:auto;display:block;}
+.brand-name{font-family:var(--font-display);font-weight:600;font-size:16px;letter-spacing:0.01em;color:var(--navy-deep);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);transition:color .15s ease;}
+.nav-links a:hover{color:var(--navy);}
 .nav-cta{
-  font-family:var(--font-mono);font-size:12px;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--text)!important;
-  border:1px solid var(--line);padding:10px 18px;
-  transition:border-color .18s ease,background .18s ease;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--paper)!important;background:var(--signal);padding:9px 16px;
+  transition:opacity .15s ease;
 }
-.nav-cta:hover{border-color:var(--accent);background:var(--accent-glow);}
-@media(max-width:880px){.nav-links a:not(.nav-cta){display:none;}}
+.nav-cta:hover{opacity:0.85;}
+@media(max-width:900px){.nav-links a:not(.nav-cta){display:none;}}
 
 /* ====================== HERO ====================== */
-.hero{
-  min-height:100vh;
-  display:flex;align-items:center;
-  padding:150px 0 50px;
-  position:relative;
-}
-.hero-grid{
-  display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;
-  width:100%;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;margin-bottom:34px;
-  opacity:0;animation:rise .8s .1s ease forwards;
-}
-.hero-eyebrow .dot{
-  width:7px;height:7px;background:var(--accent);border-radius:50%;
-  box-shadow:0 0 12px var(--accent);
-}
+.hero{padding:64px 0 84px;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.doc-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--signal);margin-bottom:18px;display:block;}
 .hero h1{
-  font-family:var(--font-display);
-  font-weight:600;
-  font-size:clamp(42px,5.6vw,84px);
-  line-height:1.04;
-  letter-spacing:-0.01em;
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(34px,3.8vw,52px);line-height:1.12;letter-spacing:-0.01em;
+  color:var(--navy-deep);
 }
-.hero h1 .line{display:block;overflow:hidden;}
-.hero h1 .line span{display:block;transform:translateY(110%);}
-.hero h1 .line:nth-child(1) span{animation:slideUp .9s .25s cubic-bezier(.16,1,.3,1) forwards;}
-.hero h1 .line:nth-child(2) span{animation:slideUp .9s .37s cubic-bezier(.16,1,.3,1) forwards;}
-.hero h1 .line:nth-child(3) span{animation:slideUp .9s .49s cubic-bezier(.16,1,.3,1) forwards;}
-.hero h1 .amber{color:var(--accent);font-style:italic;font-weight:500;}
-.hero-sub{
-  margin-top:30px;max-width:520px;
-  font-size:17px;line-height:1.62;color:var(--muted);
-  opacity:0;animation:rise .8s .75s ease forwards;
-}
-.hero-sub strong{color:var(--text);font-weight:500;}
-.hero-ctas{
-  margin-top:38px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
-  opacity:0;animation:rise .8s .9s ease forwards;
-}
+.hero h1 em{color:var(--signal);font-style:normal;}
+.hero-sub{margin-top:22px;max-width:480px;font-size:16px;line-height:1.65;color:var(--ink-soft);}
+.hero-sub strong{color:var(--ink);font-weight:600;}
+.hero-ctas{margin-top:32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
 .btn-primary{
-  font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;
-  text-transform:uppercase;
-  background:var(--accent);color:#0B0A08;font-weight:600;
-  padding:16px 26px;display:inline-flex;align-items:center;gap:10px;
-  transition:transform .18s ease,box-shadow .18s ease;
-  position:relative;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--signal);color:var(--paper);font-weight:500;
+  padding:14px 22px;display:inline-flex;align-items:center;gap:8px;
+  transition:opacity .15s ease;
 }
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px var(--accent-glow);}
+.btn-primary:hover{opacity:0.85;}
 .btn-ghost{
-  font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--muted);
-  border-bottom:1px solid var(--line);padding-bottom:4px;
-  transition:color .18s ease,border-color .18s ease;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);
+  border-bottom:1px solid var(--line-cool);padding-bottom:3px;transition:color .15s ease,border-color .15s ease;
 }
-.btn-ghost:hover{color:var(--text);border-color:var(--accent);}
+.btn-ghost:hover{color:var(--navy);border-color:var(--navy);}
 
-/* hero cell-cross-section diagram */
-.hero-schematic{
-  position:relative;aspect-ratio:1/1;
-  border:1px solid var(--line);
-  background:
-    radial-gradient(circle at 50% 45%,var(--accent-glow),transparent 60%),
-    var(--surface);
-  opacity:0;animation:rise 1s .5s ease forwards;
-  will-change:transform;
-}
-.hero-schematic .corner{position:absolute;width:10px;height:10px;border:1px solid var(--accent);}
-.hero-schematic .corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0;}
-.hero-schematic .corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0;}
-.hero-schematic .corner.bl{bottom:-1px;left:-1px;border-right:0;border-top:0;}
-.hero-schematic .corner.br{bottom:-1px;right:-1px;border-left:0;border-top:0;}
-.schematic-tag{
-  position:absolute;font-family:var(--font-mono);font-size:10px;
-  letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);
-}
-.schematic-tag.t1{top:14px;left:16px;}
-.schematic-tag.t2{top:14px;right:16px;color:var(--accent);}
-.schematic-tag.t3{bottom:14px;left:16px;}
-.schematic-tag.t4{bottom:14px;right:16px;}
-.cell-svg{width:78%;height:78%;}
+/* spec strip: parameter table, not a stat-brag band */
+.spec-strip{margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.spec-row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;}
+.spec-row:last-child{border-bottom:0;}
+.spec-row dt{font-family:var(--font-mono);color:var(--ink-soft);letter-spacing:0.02em;}
+.spec-row dd{font-family:var(--font-mono);color:var(--navy-deep);font-weight:500;text-align:right;}
+.spec-row dd.hl{color:var(--signal);}
 
-/* hero stat strip */
-.hero-stats{
-  margin-top:64px;border-top:1px solid var(--line);
-  display:grid;grid-template-columns:repeat(3,1fr);
-  opacity:0;animation:rise .8s 1.05s ease forwards;
+/* ---------- FIG PANEL (the real diagram) ---------- */
+.fig-panel{border:1px solid var(--line-cool);background:var(--paper-2);}
+.fig-panel svg{display:block;width:100%;height:auto;}
+.fig-caption{
+  border-top:1px solid var(--line-cool);padding:12px 18px;
+  font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);line-height:1.6;
 }
-.hero-stats .stat{padding:24px 28px 0 0;}
-.hero-stats .stat:not(:last-child){border-right:1px solid var(--line);}
-.hero-stats .stat .num{
-  font-family:var(--font-display);font-weight:600;font-size:30px;
-  letter-spacing:-0.01em;
-}
-.hero-stats .stat .lbl{margin-top:4px;}
+.fig-caption b{color:var(--navy-deep);}
 
-/* ====================== MARQUEE TICKER ====================== */
-.marquee{
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:var(--surface);overflow:hidden;position:relative;
-  padding:16px 0;
-}
-.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite;}
-.marquee-track span{
-  font-family:var(--font-display);font-style:italic;font-weight:500;
-  font-size:22px;color:var(--faint);padding:0 28px;white-space:nowrap;
-  display:flex;align-items:center;gap:28px;
-}
-.marquee-track span b{color:var(--accent);font-style:normal;font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* ====================== SECTION SHELL ====================== */
-section{position:relative;padding:130px 0;}
-.sec-head{margin-bottom:64px;max-width:760px;}
-.sec-label{
-  display:flex;align-items:center;gap:12px;margin-bottom:22px;
-}
-.sec-label .bar{width:38px;height:1px;background:var(--accent);}
-.sec-head h2{
-  font-family:var(--font-display);font-weight:600;
-  font-size:clamp(32px,4vw,52px);line-height:1.06;
-  letter-spacing:-0.01em;
-}
-.sec-head p{margin-top:22px;color:var(--muted);font-size:17px;max-width:560px;}
-
-/* reveal-on-scroll */
-.reveal{opacity:0;transform:translateY(38px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+/* reveal on scroll — functional only */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
 .reveal.in{opacity:1;transform:none;}
 
-/* ---------- CORRIDOR section ---------- */
-.corridor{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.corridor-flow{
-  display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;
-  border:1px solid var(--line);
-}
-.flow-node{padding:48px 40px;background:var(--surface-2);}
-.flow-node .np{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);}
-.flow-node h3{
-  font-family:var(--font-display);font-weight:600;font-size:25px;margin-top:14px;
-}
-.flow-node p{margin-top:14px;color:var(--muted);font-size:15px;}
-.flow-core{
-  width:200px;background:var(--bg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border-left:1px solid var(--line);border-right:1px solid var(--line);
-  position:relative;
-}
-.flow-core .core-logo{
-  width:76px;height:76px;
-  animation:logoglow 3s ease-in-out infinite;
-}
-@keyframes logoglow{
-  0%,100%{filter:drop-shadow(0 0 6px var(--accent));}
-  50%{filter:drop-shadow(0 0 22px var(--accent));}
-}
-.flow-core .cl{margin-top:18px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;}
-@media(max-width:760px){
-  .corridor-flow{grid-template-columns:1fr;}
-  .flow-core{width:auto;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:36px 0;}
-}
+/* ====================== SECTION SHELL ====================== */
+section{padding:88px 0;border-top:1px solid var(--line);}
+.hero{border-top:0;}
+.sec-head{margin-bottom:48px;max-width:720px;}
+.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.sec-label .idx{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--signal);}
+.sec-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.15;color:var(--navy-deep);letter-spacing:-0.01em;}
+.sec-head p{margin-top:16px;color:var(--ink-soft);font-size:15.5px;max-width:560px;}
 
-/* ---------- CAPABILITIES section ---------- */
-.cap-row{
-  display:grid;grid-template-columns:56px 1fr 1.15fr 150px 104px;gap:30px;
-  align-items:center;
-  padding:36px 0;border-top:1px solid var(--line);
-  transition:background .25s ease;
-}
-.cap-row:last-child{border-bottom:1px solid var(--line);}
-.cap-row:hover{background:linear-gradient(90deg,var(--surface),transparent);}
-.cap-num{font-family:var(--font-mono);font-size:14px;color:var(--accent);padding-top:4px;}
-.cap-row h3{font-family:var(--font-display);font-weight:600;font-size:23px;line-height:1.14;}
-.cap-row .desc{color:var(--muted);font-size:15px;}
-.cap-row .tags{display:flex;flex-direction:column;gap:8px;}
-.cap-row .tags span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faint);}
-.cap-link{display:table;margin-top:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .18s ease;}
-.cap-link:hover{border-color:var(--accent);}
-.cap-arrow{
-  justify-self:end;width:34px;height:34px;border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;color:var(--muted);
-  transition:all .2s ease;
-}
-.cap-row:hover .cap-arrow{border-color:var(--accent);color:var(--accent);transform:translate(3px,-3px);}
-@media(max-width:760px){
-  .cap-row{grid-template-columns:48px 1fr;gap:14px;}
-  .cap-row .desc,.cap-row .tags,.cap-viz{grid-column:2;}
-}
+/* ---------- PROCEDURE (how it works) ---------- */
+.proc-list{border-top:1px solid var(--line);}
+.proc-step{display:grid;grid-template-columns:90px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);}
+.proc-step .pnum{font-family:var(--font-mono);font-size:13px;color:var(--signal);}
+.proc-step h3{font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--navy-deep);}
+.proc-step p{margin-top:8px;color:var(--ink-soft);font-size:14.5px;max-width:640px;}
+@media(max-width:640px){.proc-step{grid-template-columns:1fr;gap:6px;}}
 
-/* ---------- INTELLIGENCE section (the memorable moment) ---------- */
-.intel{
-  background:
-    radial-gradient(ellipse 60% 50% at 70% 40%,var(--accent-glow),transparent 70%),
-    var(--bg);
-  border-top:1px solid var(--line);
-}
-.intel-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
-.intel h2{
-  font-family:var(--font-display);font-weight:600;
-  font-size:clamp(34px,4.2vw,56px);line-height:1.04;letter-spacing:-0.01em;
-}
-.intel h2 .amber{color:var(--accent);font-style:italic;}
-.intel p{margin-top:26px;color:var(--muted);font-size:17px;max-width:480px;}
-.intel-readout{
-  border:1px solid var(--line);background:var(--surface);
-  padding:30px;font-family:var(--font-mono);
-}
-.ro-line{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 0;border-bottom:1px solid var(--line-soft);font-size:13px;
-}
-.ro-line:last-child{border-bottom:0;}
-.ro-line .k{color:var(--muted);letter-spacing:0.06em;}
-.ro-line .v{color:var(--text);}
-.ro-line .v.acc{color:var(--accent);}
-.ro-bar{height:3px;background:var(--line);margin-top:4px;position:relative;overflow:hidden;}
-.ro-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1);}
-.ro-head{
-  display:flex;justify-content:space-between;
-  font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--faint);padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:8px;
-}
-@media(max-width:860px){.intel-grid{grid-template-columns:1fr;gap:44px;}}
+/* ---------- WHAT WE QUALIFY (capabilities) ---------- */
+.qual-row{display:grid;grid-template-columns:120px 1fr 1.05fr 160px;gap:26px;align-items:start;padding:30px 0;border-bottom:1px solid var(--line);}
+.qual-row:first-child{border-top:1px solid var(--line);}
+.qual-icon{width:120px;height:80px;border:1px solid var(--line-cool);background:var(--paper-2);display:flex;align-items:center;justify-content:center;}
+.qual-row h3{font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--navy-deep);line-height:1.2;}
+.qual-row .desc{color:var(--ink-soft);font-size:14.5px;}
+.qual-link{display:table;margin-top:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid transparent;}
+.qual-link:hover{border-color:var(--signal);}
+.qual-row .tags{display:flex;flex-direction:column;gap:6px;align-items:flex-end;text-align:right;}
+.qual-row .tags span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+@media(max-width:760px){.qual-row{grid-template-columns:80px 1fr;}.qual-row .desc,.qual-row .tags{grid-column:2;}.qual-row .tags{align-items:flex-start;text-align:left;}}
 
-/* ---------- STATS band ---------- */
-.statband{border-top:1px solid var(--line);background:var(--surface);}
-.statband-grid{display:grid;grid-template-columns:repeat(3,1fr);}
-.statband .cell{padding:60px 40px;border-right:1px solid var(--line);}
-.statband .cell:last-child{border-right:0;}
-.statband .big{
-  font-family:var(--font-display);font-weight:600;
-  font-size:clamp(38px,4.4vw,64px);letter-spacing:-0.01em;line-height:1;
-}
-.statband .big .amber{color:var(--accent);font-style:italic;}
-.statband .cap{margin-top:14px;color:var(--muted);font-size:14px;}
-@media(max-width:760px){.statband-grid{grid-template-columns:1fr;}.statband .cell{border-right:0;border-bottom:1px solid var(--line);}}
+/* ---------- WHY INDEPENDENT (spec table) ---------- */
+.why-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start;}
+.why-grid h2{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.18;color:var(--navy-deep);letter-spacing:-0.01em;}
+.why-grid h2 em{color:var(--signal);font-style:normal;}
+.why-grid p{margin-top:18px;color:var(--ink-soft);font-size:15.5px;max-width:480px;}
+.spec-table{width:100%;border-collapse:collapse;border:1px solid var(--line-cool);background:var(--paper-2);}
+.spec-table tr:not(:last-child) th,.spec-table tr:not(:last-child) td{border-bottom:1px solid var(--line);}
+.spec-table th,.spec-table td{padding:16px 18px;text-align:left;font-size:13.5px;}
+.spec-table th{font-family:var(--font-mono);font-weight:500;color:var(--ink-soft);letter-spacing:0.02em;width:46%;}
+.spec-table td{font-family:var(--font-mono);color:var(--navy-deep);}
+.spec-table td.hl{color:var(--signal);font-weight:500;}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:32px;}}
 
-/* ---------- CTA / FOOTER ---------- */
-.cta{padding:150px 0 120px;text-align:center;position:relative;}
-.cta h2{
-  font-family:var(--font-display);font-weight:600;
-  font-size:clamp(40px,6.4vw,96px);line-height:1.0;
-  letter-spacing:-0.01em;
-}
-.cta h2 .amber{color:var(--accent);font-style:italic;}
-.cta .sub{margin-top:28px;color:var(--muted);font-size:17px;}
-.cta .btn-primary{margin-top:40px;}
-footer{border-top:1px solid var(--line);padding:40px 0;}
-.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
-.foot-inner .mono{color:var(--faint);}
-.foot-links{display:flex;gap:26px;}
-
-/* ---------- keyframes ---------- */
-@keyframes slideUp{to{transform:translateY(0);}}
-@keyframes rise{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(0.72);opacity:0.5;}}
-@keyframes dash{to{stroke-dashoffset:-260;}}
-@keyframes spin{to{transform:rotate(360deg);}}
-@keyframes scanY{0%{transform:translateY(-4%);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(104%);opacity:0;}}
-
-/* ===== animated schematic library ===== */
-@keyframes flowR{0%{transform:translateX(0);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateX(800px);opacity:0}}
-@keyframes flowL{0%{transform:translateX(0);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateX(-800px);opacity:0}}
-@keyframes drop{0%{transform:translateY(0);opacity:0}14%{opacity:1}80%{opacity:1}100%{transform:translateY(60px);opacity:0}}
-@keyframes ripple{0%{transform:scale(.16);opacity:.9}100%{transform:scale(1);opacity:0}}
-@keyframes sweep{0%{transform:translateX(0)}100%{transform:translateX(78px)}}
-@keyframes stream{0%{transform:translateX(0);opacity:0}10%{opacity:1}88%{opacity:1}100%{transform:translateX(850px);opacity:0}}
-@keyframes blink{0%,100%{opacity:.22}50%{opacity:1}}
-
-.cmap{border:1px solid var(--line);background:var(--surface-2);margin-bottom:26px;overflow:hidden;}
-.cmap svg,.intake-strip svg{display:block;width:100%;height:auto;}
-.ripple-ring{transform-box:fill-box;transform-origin:center;}
-.cap-viz{justify-self:end;width:104px;height:104px;border:1px solid var(--line);
-  background:var(--bg);position:relative;overflow:hidden;transition:border-color .2s ease;}
-.cap-row:hover .cap-viz{border-color:var(--accent);}
-.intake-strip{border:1px solid var(--line);background:var(--bg);margin-top:46px;overflow:hidden;}
-.intake-cap{padding:14px 20px;border-bottom:1px solid var(--line);
-  font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;
-  text-transform:uppercase;color:var(--faint);display:flex;justify-content:space-between;}
-
-/* ===== toolbox ===== */
-.toolbox{border-top:1px solid var(--line);background:var(--surface);}
-.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.tool-card{
-  border:1px solid var(--line);background:var(--bg);
-  padding:30px 28px 26px;display:flex;flex-direction:column;
-  position:relative;overflow:hidden;
-  transition:border-color .2s ease,transform .2s ease;
-}
-.tool-card::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:var(--accent);transform:scaleX(0);transform-origin:left;
-  transition:transform .3s ease;
-}
-.tool-card:hover{border-color:var(--accent);transform:translateY(-5px);}
-.tool-card:hover::before{transform:scaleX(1);}
-.tool-card .tnum{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--accent);}
-.tool-card h3{font-family:var(--font-display);font-weight:600;font-size:20px;
-  line-height:1.14;margin-top:16px;}
-.tool-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6;flex:1;}
-.tool-card .ttag{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--faint);margin-top:20px;}
+/* ---------- TOOLBOX ---------- */
+.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-cool);border:1px solid var(--line-cool);}
+.tool-card{background:var(--paper-2);padding:26px 24px 22px;display:flex;flex-direction:column;transition:background .15s ease;}
+.tool-card:hover{background:var(--navy-fill-soft);}
+.tool-card .tnum{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--signal);}
+.tool-card h3{font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--navy-deep);margin-top:14px;}
+.tool-card p{margin-top:10px;color:var(--ink-soft);font-size:13.5px;line-height:1.6;flex:1;}
+.tool-card .ttag{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:18px;}
 .tool-launch{
-  margin-top:16px;padding-top:16px;border-top:1px solid var(--line);
-  font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--text);display:flex;align-items:center;justify-content:space-between;
-  transition:color .18s ease;
+  margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--navy-deep);display:flex;align-items:center;justify-content:space-between;
 }
-.tool-card:hover .tool-launch{color:var(--accent);}
 @media(max-width:760px){.tool-grid{grid-template-columns:1fr;}}
 
+/* ---------- TEAM ---------- */
+.vm-team{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-cool);border:1px solid var(--line-cool);margin-top:8px;}
+.vm-member{background:var(--paper-2);padding:28px;}
+.vm-role{color:var(--signal);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-mono);}
+.vm-member h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:8px;color:var(--navy-deep);}
+.vm-member p{color:var(--ink-soft);font-size:13.5px;line-height:1.6;}
+.vm-member.span2{grid-column:1 / -1;}
+@media(max-width:760px){.vm-team{grid-template-columns:1fr;}.vm-member.span2{grid-column:auto;}}
+
+/* ---------- FAQ ---------- */
+.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--line-cool);border:1px solid var(--line-cool);margin-top:8px;}
+.faq-item{background:var(--paper-2);padding:24px 28px;}
+.faq-item h3{font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:8px;color:var(--navy-deep);line-height:1.4;}
+.faq-item p{color:var(--ink-soft);font-size:13.5px;line-height:1.65;}
+
+/* ---------- CTA / FOOTER ---------- */
+.cta{text-align:left;}
+.cta-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;}
+.cta h2{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;color:var(--navy-deep);letter-spacing:-0.01em;}
+.cta h2 em{color:var(--signal);font-style:normal;}
+.cta .sub{margin-top:14px;color:var(--ink-soft);font-size:15px;max-width:440px;}
+.cta .btn-primary{margin-top:26px;}
+footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3);}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+.foot-inner .mono{color:var(--ink-soft);}
+.foot-links{display:flex;gap:24px;}
+
+@keyframes ledBlink{0%,100%{opacity:1;}50%{opacity:0.25;}}
+.led{animation:ledBlink 2.2s ease-in-out infinite;}
+
 @media(max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:40px;}
-  .hero-schematic{max-width:420px;}
+  .hero-grid{grid-template-columns:1fr;gap:36px;}
   .shell{padding:0 22px;}
-  .nav-inner{padding:18px 22px;}
-  .hero-stats{grid-template-columns:1fr;}
-  .hero-stats .stat:not(:last-child){border-right:0;border-bottom:1px solid var(--line);padding-bottom:18px;}
+  .nav-inner{padding:16px 22px;}
+  .doc-bar-inner{padding:9px 22px;}
 }
 </style>
 </head>
 <body>
 
-<!-- ====================== NAV ====================== -->
+<div class="doc-bar">
+  <div class="doc-bar-inner">
+    <span>VOLTAMISSION · TECHNICAL REFERENCE</span>
+    <span>BATTERY CELL &amp; BMS QUALIFICATION</span>
+    <span>REV 2026.07 · TORONTO, CA</span>
+  </div>
+</div>
+
 <header class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="brand">
@@ -639,9 +469,9 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
       <span class="brand-name">VoltaMission</span>
     </a>
     <nav class="nav-links">
-      <a href="#corridor">How it works</a>
-      <a href="#capabilities">Services</a>
-      <a href="#intelligence">Why us</a>
+      <a href="#how">How it works</a>
+      <a href="#qualify">What we qualify</a>
+      <a href="#why">Why independent</a>
       <a href="#toolbox">Toolbox</a>
       <a href="#team">Team</a>
       <a href="#faq">FAQ</a>
@@ -652,328 +482,352 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
 
 <!-- ====================== HERO ====================== -->
 <section class="hero">
-  <div class="shell">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <div class="hero-eyebrow">
-          <span class="dot"></span>
-          <span class="mono">Battery Cell &amp; BMS Qualification · No Inventory · No Margin</span>
-        </div>
-        <h1>
-          <span class="line"><span>The battery engineer</span></span>
-          <span class="line"><span>you don't have —</span></span>
-          <span class="line"><span class="amber">for cells &amp; BMS you can't get wrong.</span></span>
-        </h1>
-        <p class="hero-sub">
-          <strong>Independent qualification, not a datasheet.</strong> We source and vet
-          18650, 4680 cylindrical, and pouch cells — plus custom BMS — on cycle life,
-          thermal safety, and real test data. We hold no inventory and take no margin:
-          the qualification is the product.
-        </p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn-primary">Request an engagement →</a>
-          <a href="#corridor" class="btn-ghost">[ See how it works ]</a>
-        </div>
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <span class="doc-tag">Battery Cell &amp; BMS Qualification · No Inventory · No Margin</span>
+      <h1>The battery engineer you don't have — for cells &amp; BMS you can't get wrong.</h1>
+      <p class="hero-sub">
+        <strong>Independent qualification, not a datasheet.</strong> We source and vet
+        18650, 4680 cylindrical, and pouch cells — plus custom BMS — on cycle life,
+        thermal safety, and real test data. We hold no inventory and take no margin:
+        the qualification is the product.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Request an engagement →</a>
+        <a href="#how" class="btn-ghost">See the qualification process</a>
       </div>
+      <dl class="spec-strip">
+        <div class="spec-row"><dt>Cell formats supported</dt><dd>18650 · 4680 · Pouch</dd></div>
+        <div class="spec-row"><dt>Margin / inventory held</dt><dd class="hl">0%</dd></div>
+        <div class="spec-row"><dt>Engineers on qualification team</dt><dd>5</dd></div>
+      </dl>
+    </div>
 
-      <div class="hero-schematic" id="heroSchematic">
-        <div class="corner tl"></div><div class="corner tr"></div>
-        <div class="corner bl"></div><div class="corner br"></div>
-        <span class="schematic-tag t1">18650 / 4680 / POUCH</span>
-        <span class="schematic-tag t2">QUALIFIED ✓</span>
-        <span class="schematic-tag t3">UN38.3</span>
-        <span class="schematic-tag t4">IEC 62133</span>
-        <svg class="cell-svg" viewBox="0 0 300 300" aria-label="Cylindrical battery cell cross-section, engineering-qualified">
-          <defs>
-            <clipPath id="cellClip"><circle cx="150" cy="150" r="118"/></clipPath>
-          </defs>
-          <circle cx="150" cy="150" r="118" fill="none" stroke="#2C2620" stroke-width="10"/>
-          <g clip-path="url(#cellClip)" opacity="0.9">
-            <circle cx="150" cy="150" r="108" fill="none" stroke="#2C2620" stroke-width="3"/>
-            <circle cx="150" cy="150" r="92" fill="none" stroke="#3A322A" stroke-width="3"/>
-            <circle cx="150" cy="150" r="76" fill="none" stroke="#3A322A" stroke-width="3"/>
-            <circle cx="150" cy="150" r="60" fill="none" stroke="#E0913F" stroke-width="2.5" opacity="0.55"/>
-            <circle cx="150" cy="150" r="44" fill="none" stroke="#3A322A" stroke-width="3"/>
-            <circle cx="150" cy="150" r="28" fill="none" stroke="#E0913F" stroke-width="2.5" opacity="0.75"/>
-            <circle cx="150" cy="150" r="12" fill="#E0913F"/>
-            <rect x="0" y="0" width="300" height="10" fill="#E0913F" opacity="0.5" style="animation:scanY 3.6s ease-in-out infinite"/>
+    <figure class="fig-panel reveal">
+      <svg viewBox="0 0 640 460" role="img" aria-label="Diagram: cylindrical cell pack wired to a BMS with temperature sensing, voltage monitoring, and communication output">
+        <g font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="0.6" fill="#54626D">
+          <text x="20" y="26">CELL PACK (18650 / 4680)</text>
+          <text x="300" y="26">BMS PCB</text>
+        </g>
+
+        <!-- cylindrical cells, 3x2 grid, drawn as real cylinders (can + crimped +terminal) -->
+        <g stroke="#1D4E6B" stroke-width="1.4" fill="#C7DAE2">
+          <!-- row 1 -->
+          <g transform="translate(20,40)">
+            <rect x="8" y="10" width="15" height="8" rx="2" fill="#C7DAE2"/>
+            <rect x="0" y="18" width="31" height="58" rx="5"/>
+            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
+            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
           </g>
-          <circle cx="150" cy="150" r="118" fill="none" stroke="#E0913F" stroke-width="1.5" opacity="0.5"/>
-          <rect x="132" y="18" width="36" height="16" rx="2" fill="#16130F" stroke="#E0913F" stroke-width="1.5"/>
-          <text x="150" y="285" text-anchor="middle" fill="#9A9184" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="2">CELL CROSS-SECTION</text>
-        </svg>
-      </div>
-    </div>
-
-    <!-- stat strip -->
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="num">18650 / 4680 / Pouch</div>
-        <div class="lbl mono">Cell formats qualified</div>
-      </div>
-      <div class="stat">
-        <div class="num">0%</div>
-        <div class="lbl mono">Margin or inventory held</div>
-      </div>
-      <div class="stat">
-        <div class="num">5</div>
-        <div class="lbl mono">Battery, BMS &amp; energy-systems experts</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== MARQUEE TICKER ====================== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track" id="marqueeTrack">
-    <span>18650 <b>CYLINDRICAL</b> 4680 <b>CYLINDRICAL</b> POUCH <b>CELLS</b> CUSTOM <b>BMS</b> CYCLE LIFE <b>VERIFIED</b> THERMAL SAFETY <b>MARGIN</b> UN38.3 <b>&amp;</b> IEC 62133 <b>CERT-CHECKED</b> NO INVENTORY <b>NO MARGIN</b></span>
-    <span>18650 <b>CYLINDRICAL</b> 4680 <b>CYLINDRICAL</b> POUCH <b>CELLS</b> CUSTOM <b>BMS</b> CYCLE LIFE <b>VERIFIED</b> THERMAL SAFETY <b>MARGIN</b> UN38.3 <b>&amp;</b> IEC 62133 <b>CERT-CHECKED</b> NO INVENTORY <b>NO MARGIN</b></span>
-  </div>
-</div>
-
-<!-- ====================== THE CORRIDOR ====================== -->
-<section class="corridor" id="corridor">
-  <div class="shell">
-    <div class="sec-head reveal">
-      <div class="sec-label"><span class="bar"></span><span class="mono tick">01 / How it works</span></div>
-      <h2>From dead-cell risk<br/>to qualified supply.</h2>
-      <p>When your own network can't verify a cell or BMS vendor beyond the datasheet,
-        we qualify the supplier on technical merit — cycle life, thermal safety,
-        real production capability — and hand you a de-risked introduction.</p>
-    </div>
-
-    <div class="cmap reveal">
-      <svg viewBox="0 0 1200 260" aria-label="Sourcing flow from global cell/BMS supply to North American buyers">
-        <g stroke="#241F19" stroke-width="1">
-          <line x1="236" y1="78" x2="1002" y2="78"/>
-          <line x1="236" y1="120" x2="1002" y2="120"/>
-          <line x1="236" y1="162" x2="1002" y2="162"/>
+          <g transform="translate(64,40)">
+            <rect x="8" y="10" width="15" height="8" rx="2"/>
+            <rect x="0" y="18" width="31" height="58" rx="5"/>
+            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
+            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
+          </g>
+          <g transform="translate(108,40)">
+            <rect x="8" y="10" width="15" height="8" rx="2"/>
+            <rect x="0" y="18" width="31" height="58" rx="5"/>
+            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
+            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
+          </g>
+          <!-- row 2 -->
+          <g transform="translate(20,132)">
+            <rect x="8" y="10" width="15" height="8" rx="2"/>
+            <rect x="0" y="18" width="31" height="58" rx="5"/>
+            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
+            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
+          </g>
+          <g transform="translate(64,132)">
+            <rect x="8" y="10" width="15" height="8" rx="2"/>
+            <rect x="0" y="18" width="31" height="58" rx="5"/>
+            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
+            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
+          </g>
+          <g transform="translate(108,132)">
+            <rect x="8" y="10" width="15" height="8" rx="2"/>
+            <rect x="0" y="18" width="31" height="58" rx="5"/>
+            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
+            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
+          </g>
         </g>
-        <g font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="1.4">
-          <text x="240" y="68" fill="#E0913F">CELLS (18650/4680/POUCH) →</text>
-          <text x="998" y="110" fill="#5C554A" text-anchor="end">← TECHNICAL QC</text>
-          <text x="240" y="152" fill="#E0913F">CUSTOM BMS →</text>
+
+        <!-- balance leads from each cell to BMS -->
+        <g stroke="#8FA9B6" stroke-width="1" fill="none">
+          <path d="M51,58 H300 V78"/>
+          <path d="M95,58 H310 V78" />
+          <path d="M139,150 H320 V180"/>
+          <path d="M51,150 H290 V180"/>
         </g>
-        <!-- Asia cell/BMS cluster -->
-        <g>
-          <rect x="70" y="58" width="22" height="22" fill="#E0913F"/>
-          <rect x="98" y="58" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="126" y="58" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="154" y="58" width="22" height="22" fill="#E0913F"/>
-          <rect x="70" y="86" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="98" y="86" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="126" y="86" width="22" height="22" fill="#E0913F"/>
-          <rect x="154" y="86" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="70" y="114" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="98" y="114" width="22" height="22" fill="#E0913F"/>
-          <rect x="126" y="114" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="154" y="114" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="70" y="142" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="98" y="142" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="126" y="142" width="22" height="22" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="154" y="142" width="22" height="22" fill="#E0913F"/>
-          <text x="123" y="198" text-anchor="middle" fill="#9A9184"
-                font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="2">GLOBAL</text>
-          <text x="123" y="214" text-anchor="middle" fill="#5C554A"
-                font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="1">CELL &amp; BMS SUPPLY</text>
+
+        <!-- BMS PCB block -->
+        <g transform="translate(300,60)">
+          <rect x="0" y="0" width="150" height="130" fill="#FFFFFF" stroke="#1D4E6B" stroke-width="1.4"/>
+          <circle cx="8" cy="8" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
+          <circle cx="142" cy="8" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
+          <circle cx="8" cy="122" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
+          <circle cx="142" cy="122" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
+          <!-- MCU / protection IC -->
+          <rect x="45" y="38" width="60" height="46" fill="#E4ECEF" stroke="#1D4E6B" stroke-width="1.2"/>
+          <g stroke="#1D4E6B" stroke-width="1">
+            <line x1="52" y1="38" x2="52" y2="30"/><line x1="65" y1="38" x2="65" y2="30"/>
+            <line x1="78" y1="38" x2="78" y2="30"/><line x1="91" y1="38" x2="91" y2="30"/>
+            <line x1="52" y1="84" x2="52" y2="92"/><line x1="65" y1="84" x2="65" y2="92"/>
+            <line x1="78" y1="84" x2="78" y2="92"/><line x1="91" y1="84" x2="91" y2="92"/>
+          </g>
+          <text x="75" y="64" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#12303F">MCU +</text>
+          <text x="75" y="75" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#12303F">PROTECTION</text>
+          <!-- status LED -->
+          <circle class="led" cx="16" cy="20" r="3" fill="#B5551F"/>
+          <text x="24" y="23" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#54626D">STATUS</text>
+          <text x="75" y="116" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#54626D">BMS PCB</text>
         </g>
-        <!-- North America node -->
-        <g>
-          <circle cx="1086" cy="120" r="52" fill="none" stroke="#241F19"/>
-          <circle cx="1086" cy="120" r="30" fill="none" stroke="#2E2820"/>
-          <circle cx="1086" cy="120" r="8" fill="#F5F1E8"/>
-          <circle cx="1086" cy="120" r="16" fill="none" stroke="#E0913F" stroke-width="1" opacity="0.6"/>
-          <text x="1086" y="198" text-anchor="middle" fill="#9A9184"
-                font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="2">NORTH AMERICA</text>
-          <text x="1086" y="214" text-anchor="middle" fill="#5C554A"
-                font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="1">WHERE YOU BUILD</text>
+
+        <!-- outputs: temp sensor, voltage monitor, comms -->
+        <g stroke="#1D4E6B" stroke-width="1.2" fill="#FFFFFF">
+          <rect x="480" y="20" width="140" height="46" />
+          <rect x="480" y="76" width="140" height="46" />
+          <rect x="480" y="132" width="140" height="46" />
         </g>
-        <!-- packets -->
-        <g>
-          <rect x="230" y="72.5" width="11" height="11" fill="#E0913F" style="animation:flowR 7s linear infinite;animation-delay:-.2s"/>
-          <rect x="230" y="72.5" width="11" height="11" fill="#E0913F" style="animation:flowR 7s linear infinite;animation-delay:-2.5s"/>
-          <rect x="230" y="72.5" width="11" height="11" fill="#E0913F" style="animation:flowR 7s linear infinite;animation-delay:-4.8s"/>
-          <rect x="990" y="114.5" width="11" height="11" fill="#5C554A" style="animation:flowL 8s linear infinite;animation-delay:-1s"/>
-          <rect x="990" y="114.5" width="11" height="11" fill="#5C554A" style="animation:flowL 8s linear infinite;animation-delay:-3.7s"/>
-          <rect x="990" y="114.5" width="11" height="11" fill="#5C554A" style="animation:flowL 8s linear infinite;animation-delay:-6.4s"/>
-          <rect x="230" y="156.5" width="11" height="11" fill="#E0913F" style="animation:flowR 6.4s linear infinite;animation-delay:-1.4s"/>
-          <rect x="230" y="156.5" width="11" height="11" fill="#E0913F" style="animation:flowR 6.4s linear infinite;animation-delay:-4.3s"/>
+        <g font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#12303F">
+          <text x="492" y="40">TEMP SENSOR</text>
+          <text x="492" y="55" font-size="12" fill="#B5551F">25°C</text>
+          <text x="492" y="96">CELL VOLTAGE MONITOR</text>
+          <text x="492" y="111" font-size="12" fill="#B5551F">4.20 V</text>
+          <text x="492" y="152">COMMS OUT</text>
+          <text x="492" y="167" font-size="12" fill="#B5551F">CAN / UART</text>
+        </g>
+        <g stroke="#8FA9B6" stroke-width="1" fill="none">
+          <path d="M450,90 H465 V43 H480"/>
+          <path d="M450,90 H465 V99 H480"/>
+          <path d="M450,90 H465 V155 H480"/>
+        </g>
+
+        <!-- pouch cell inset, drawn correctly: flat sealed foil pack with tabs, not a circle -->
+        <g transform="translate(20,250)">
+          <text x="0" y="0" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="0.6" fill="#54626D">POUCH CELL (CORRECT FORM FACTOR)</text>
+          <rect x="0" y="14" width="140" height="90" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.4"/>
+          <rect x="0" y="14" width="140" height="8" fill="none" stroke="#1D4E6B" stroke-width="1" stroke-dasharray="3,2"/>
+          <rect x="0" y="96" width="140" height="8" fill="none" stroke="#1D4E6B" stroke-width="1" stroke-dasharray="3,2"/>
+          <rect x="24" y="0" width="22" height="16" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.2"/>
+          <rect x="94" y="0" width="22" height="16" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.2"/>
+          <text x="35" y="-4" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#12303F">+</text>
+          <text x="105" y="-4" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#12303F">−</text>
+          <text x="0" y="128" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#54626D">LAMINATE FOIL · HEAT-SEALED EDGE</text>
+          <text x="0" y="140" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#54626D">TAB LEADS, NOT CIRCULAR</text>
+        </g>
+
+        <g font-family="IBM Plex Mono,monospace" font-size="9" fill="#8B9398">
+          <text x="300" y="250">Cylindrical cells: steel can, crimped</text>
+          <text x="300" y="264">+terminal cap — circular cross-section.</text>
+          <text x="300" y="284">Pouch cells: flat stacked foil pack —</text>
+          <text x="300" y="298">NOT circular. Form factor drives fixture,</text>
+          <text x="300" y="312">balance-lead routing, and thermal design.</text>
         </g>
       </svg>
-    </div>
+      <figcaption class="fig-caption">
+        <b>FIG. 1</b> — What we qualify: cylindrical (18650/4680) and pouch cell construction,
+        wired to BMS protection, cell-balancing, temperature sensing, and communication output.
+        Not a stock image — drawn to the actual construction we inspect.
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
-    <div class="corridor-flow reveal">
-      <div class="flow-node">
-        <div class="np">You're stuck</div>
-        <h3>The dead cell</h3>
-        <p>The cell or BMS vendor's datasheet looks fine — but you can't verify cycle-life
-          claims, thermal-safety margin, or whether they can hit production volume without
-          a battery engineer on staff.</p>
+<!-- ====================== HOW IT WORKS (procedure) ====================== -->
+<section id="how">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="idx">01</span><span class="mono">How it works</span></div>
+      <h2>A qualification protocol, not a sales pitch.</h2>
+      <p>Every engagement follows the same four steps — the same protocol our
+        engineers used qualifying cells and BMS on production lines, applied to
+        your supplier before you commit a purchase order.</p>
+    </div>
+    <div class="proc-list">
+      <div class="proc-step reveal">
+        <div class="pnum">STEP 01</div>
+        <div>
+          <h3>Intake spec</h3>
+          <p>Cell format (18650, 4680, pouch), target cycle life, energy density, and BMS
+            protection requirements — captured before any vendor is contacted.</p>
+        </div>
       </div>
-      <div class="flow-core">
-        <img src="logo-vm.png" alt="VoltaMission" class="core-logo" />
-        <div class="cl">VoltaMission</div>
+      <div class="proc-step reveal">
+        <div class="pnum">STEP 02</div>
+        <div>
+          <h3>Certification &amp; documentation audit</h3>
+          <p>UN38.3 transport-safety and IEC 62133 cell-safety test reports, ISO 9001 /
+            UL documentation, and factory audit records — verified against the actual
+            report, not a claim on a spec sheet.</p>
+        </div>
       </div>
-      <div class="flow-node">
-        <div class="np">You build</div>
-        <h3>Qualified supply</h3>
-        <p>We vet the cell or BMS vendor on technical merit and hand you a de-risked
-          introduction — sourcing across North America and Asia, no inventory, no markup.</p>
+      <div class="proc-step reveal">
+        <div class="pnum">STEP 03</div>
+        <div>
+          <h3>Sample &amp; cycle-test verification</h3>
+          <p>Physical samples checked against claimed cycle life, thermal-runaway margin,
+            and — for BMS — protection-circuit accuracy and cell-balancing performance.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal">
+        <div class="pnum">STEP 04</div>
+        <div>
+          <h3>Qualified introduction</h3>
+          <p>A de-risked handoff to the supplier. No inventory held, no margin taken —
+            the engagement is the qualification itself.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====================== CAPABILITIES ====================== -->
-<section id="capabilities">
+<!-- ====================== WHAT WE QUALIFY (capabilities) ====================== -->
+<section id="qualify">
   <div class="shell">
     <div class="sec-head reveal">
-      <div class="sec-label"><span class="bar"></span><span class="mono tick">02 / Services</span></div>
+      <div class="sec-label"><span class="idx">02</span><span class="mono">What we qualify</span></div>
       <h2>What each engagement delivers.</h2>
-      <p><a href="/supplier-qualification-checklist/" class="cap-link">Read the 5-point battery supplier qualification checklist →</a></p>
+      <p><a href="/supplier-qualification-checklist/" class="qual-link">Read the 5-point battery supplier qualification checklist →</a></p>
     </div>
 
-    <div class="cap-list">
-      <div class="cap-row reveal">
-        <div class="cap-num">/01</div>
+    <div class="qual-list">
+      <div class="qual-row reveal">
+        <div class="qual-icon">
+          <svg viewBox="0 0 100 60" width="72" height="44">
+            <g stroke="#1D4E6B" stroke-width="1.3" fill="#C7DAE2">
+              <rect x="6" y="8" width="16" height="34" rx="4"/>
+              <rect x="10" y="4" width="8" height="6" rx="1.5"/>
+            </g>
+            <g stroke="#1D4E6B" stroke-width="1.3" fill="#C7DAE2">
+              <rect x="34" y="14" width="46" height="26" />
+              <rect x="34" y="14" width="46" height="5" fill="none" stroke-dasharray="2,2"/>
+              <rect x="34" y="35" width="46" height="5" fill="none" stroke-dasharray="2,2"/>
+              <rect x="44" y="8" width="10" height="8"/>
+              <rect x="62" y="8" width="10" height="8"/>
+            </g>
+          </svg>
+        </div>
         <h3>Hard-to-find cell &amp; BMS component sourcing</h3>
         <div class="desc">Locate non-catalog 18650, 4680, and pouch cell suppliers, and
           custom BMS components, for small / R&amp;D-volume builds that distributors and
           marketplaces won't touch.
-          <a href="/services/hard-to-find-components/" class="cap-link">Service detail →</a></div>
+          <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a></div>
         <div class="tags"><span>R&amp;D volume</span><span>Hardware startups</span></div>
-        <div class="cap-viz">
-          <svg viewBox="0 0 104 104">
-            <line x1="24" y1="84" x2="80" y2="84" stroke="#2E2820" stroke-width="1.5"/>
-            <rect x="30" y="18" width="10" height="10" fill="#E0913F" style="animation:drop 2.6s ease-in infinite;animation-delay:0s"/>
-            <rect x="47" y="18" width="10" height="10" fill="#E0913F" style="animation:drop 2.6s ease-in infinite;animation-delay:-.85s"/>
-            <rect x="64" y="18" width="10" height="10" fill="#E0913F" style="animation:drop 2.6s ease-in infinite;animation-delay:-1.7s"/>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-icon">
+          <svg viewBox="0 0 100 60" width="72" height="44">
+            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
+              <rect x="26" y="6" width="48" height="48" rx="3" fill="#FFFFFF"/>
+              <line x1="34" y1="20" x2="66" y2="20"/>
+              <line x1="34" y1="28" x2="66" y2="28"/>
+              <line x1="34" y1="36" x2="58" y2="36"/>
+              <path d="M34,44 l5,5 l10,-11" stroke="#B5551F" stroke-width="1.6" fill="none"/>
+            </g>
           </svg>
         </div>
-      </div>
-      <div class="cap-row reveal">
-        <div class="cap-num">/02</div>
         <h3>Battery cell &amp; BMS technical qualification</h3>
         <div class="desc">Vet suppliers on technical merit — cycle life, energy density,
           thermal-runaway margin, protection-circuit accuracy, samples, and certification
           (UN38.3, IEC 62133) — so you don't qualify a broker chain or get burned on a cell
           that fails in the field.
-          <a href="/services/technical-vendor-qualification/" class="cap-link">Service detail →</a></div>
+          <a href="/services/technical-vendor-qualification/" class="qual-link">Service detail →</a></div>
         <div class="tags"><span>Decision-grade</span><span>Cert-verified</span></div>
-        <div class="cap-viz">
-          <svg viewBox="0 0 104 104">
-            <circle class="ripple-ring" cx="52" cy="52" r="36" fill="none" stroke="#E0913F" stroke-width="1.5" style="animation:ripple 3s ease-out infinite"/>
-            <circle class="ripple-ring" cx="52" cy="52" r="36" fill="none" stroke="#E0913F" stroke-width="1.5" style="animation:ripple 3s ease-out infinite;animation-delay:-1s"/>
-            <circle class="ripple-ring" cx="52" cy="52" r="36" fill="none" stroke="#E0913F" stroke-width="1.5" style="animation:ripple 3s ease-out infinite;animation-delay:-2s"/>
-            <circle cx="52" cy="52" r="5" fill="#E0913F"/>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-icon">
+          <svg viewBox="0 0 100 60" width="72" height="44">
+            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
+              <circle cx="26" cy="30" r="16"/>
+              <path d="M10,30 h32 M26,14 a16,16 0 0 1 0,32 a16,16 0 0 1 0,-32" />
+              <line x1="12" y1="22" x2="40" y2="22"/>
+              <line x1="12" y1="38" x2="40" y2="38"/>
+            </g>
+            <g stroke="#1D4E6B" stroke-width="1.2" stroke-dasharray="2,2">
+              <line x1="46" y1="30" x2="74" y2="18"/>
+            </g>
+            <circle cx="78" cy="15" r="4" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.2"/>
+            <text x="78" y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" fill="#54626D">NA</text>
+            <text x="26" y="52" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" fill="#54626D">ASIA</text>
           </svg>
         </div>
-      </div>
-      <div class="cap-row reveal">
-        <div class="cap-num">/03</div>
         <h3>Cross-border cell &amp; BMS sourcing support</h3>
         <div class="desc">Qualified cell and BMS supplier shortlists, overseas-side QC, and
           bilingual negotiation — so North American teams can source battery components
           globally without the language, distance, and trust barriers.
-          <a href="/services/cross-border-sourcing/" class="cap-link">Service detail →</a></div>
+          <a href="/services/cross-border-sourcing/" class="qual-link">Service detail →</a></div>
         <div class="tags"><span>NA manufacturers</span><span>Cross-border</span></div>
-        <div class="cap-viz">
-          <svg viewBox="0 0 104 104">
-            <g fill="#2E2820">
-              <circle cx="26" cy="26" r="2.6"/><circle cx="44" cy="26" r="2.6" fill="#E0913F"/><circle cx="62" cy="26" r="2.6"/><circle cx="80" cy="26" r="2.6"/>
-              <circle cx="26" cy="44" r="2.6"/><circle cx="44" cy="44" r="2.6"/><circle cx="62" cy="44" r="2.6"/><circle cx="80" cy="44" r="2.6" fill="#E0913F"/>
-              <circle cx="26" cy="62" r="2.6" fill="#E0913F"/><circle cx="44" cy="62" r="2.6"/><circle cx="62" cy="62" r="2.6"/><circle cx="80" cy="62" r="2.6"/>
-              <circle cx="26" cy="80" r="2.6"/><circle cx="44" cy="80" r="2.6"/><circle cx="62" cy="80" r="2.6" fill="#E0913F"/><circle cx="80" cy="80" r="2.6"/>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-icon">
+          <svg viewBox="0 0 100 60" width="72" height="44">
+            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
+              <rect x="6" y="10" width="34" height="40" rx="3"/>
+              <circle cx="23" cy="26" r="9"/>
+              <line x1="23" y1="26" x2="23" y2="20"/>
+              <line x1="23" y1="26" x2="27" y2="29"/>
+              <line x1="12" y1="44" x2="34" y2="44"/>
             </g>
-            <rect x="13" y="16" width="2" height="72" fill="#E0913F" style="animation:sweep 2.8s linear infinite"/>
+            <g stroke="#B5551F" stroke-width="1.4">
+              <line x1="46" y1="12" x2="72" y2="30" stroke-dasharray="3,2"/>
+              <path d="M69,25 l6,5 l-7,3 z" fill="#B5551F" stroke="none"/>
+            </g>
+            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
+              <path d="M80,14 h8 v6 l6,16 a3,3 0 0 1 -3,4 h-14 a3,3 0 0 1 -3,-4 l6,-16 z"/>
+              <line x1="77" y1="30" x2="97" y2="30"/>
+            </g>
           </svg>
         </div>
+        <h3>Battery test equipment, R&amp;D materials &amp; laser equipment sourcing</h3>
+        <div class="desc">Source and qualify battery cyclers and environmental / thermal-safety
+          test chambers, small-quantity electrode / electrolyte / separator materials, and laser
+          systems used in battery manufacturing — tab welding and cell-can cutting.
+          <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a></div>
+        <div class="tags"><span>Lab equipment</span><span>R&amp;D materials</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====================== INTELLIGENCE (memorable moment) ====================== -->
-<section class="intel" id="intelligence">
+<!-- ====================== WHY INDEPENDENT ====================== -->
+<section id="why">
   <div class="shell">
-    <div class="intel-grid">
+    <div class="why-grid">
       <div class="reveal">
-        <div class="sec-label"><span class="bar"></span><span class="mono tick">03 / Why us</span></div>
-        <h2>Independent <span class="amber">qualification</span>, not a markup.</h2>
+        <div class="sec-label"><span class="idx">03</span><span class="mono">Why independent</span></div>
+        <h2>Independent <em>qualification</em>, not a markup.</h2>
         <p>We don't manufacture cells. We don't stock BMS inventory. The team has built
           battery and grid-storage production lines, so we know which spec actually
           predicts failure, which vendor can really hit cycle-life claims, and what a BMS
           misses under real load. You pay to be right, not just connected.</p>
-        <div class="hero-ctas" style="animation:none;opacity:1;margin-top:30px;">
-          <a href="#contact" class="btn-ghost">[ Talk to a battery engineer ]</a>
+        <div class="hero-ctas" style="margin-top:24px;">
+          <a href="#contact" class="btn-ghost">Talk to a battery engineer</a>
         </div>
-        <p style="margin-top:26px;">
-          <a href="/vs/sourcing-broker/" class="cap-link" style="display:inline;margin-right:18px;">vs a broker →</a>
-          <a href="/vs/distributor/" class="cap-link" style="display:inline;margin-right:18px;">vs a distributor →</a>
-          <a href="/vs/marketplace/" class="cap-link" style="display:inline;">vs a marketplace →</a>
+        <p style="margin-top:22px;">
+          <a href="/vs/sourcing-broker/" class="qual-link" style="display:inline;margin-right:16px;">vs a broker →</a>
+          <a href="/vs/distributor/" class="qual-link" style="display:inline;margin-right:16px;">vs a distributor →</a>
+          <a href="/vs/marketplace/" class="qual-link" style="display:inline;">vs a marketplace →</a>
         </p>
       </div>
-      <div class="intel-readout reveal">
-        <div class="ro-head"><span>How we work</span><span>● Engaged</span></div>
-        <div class="ro-line"><span class="k">Sourcing scope</span><span class="v">18650 · 4680 · Pouch · Custom BMS</span></div>
-        <div class="ro-bar"><i data-w="55%"></i></div>
-        <div class="ro-line"><span class="k">Qualification basis</span><span class="v acc">Cycle life · thermal safety</span></div>
-        <div class="ro-bar"><i data-w="80%"></i></div>
-        <div class="ro-line"><span class="k">Margin held</span><span class="v acc">0% — no inventory, no markup</span></div>
-        <div class="ro-bar"><i data-w="4%"></i></div>
-        <div class="ro-line"><span class="k">Reach</span><span class="v acc">North America · Asia</span></div>
-      </div>
-    </div>
-
-    <div class="intake-strip reveal">
-      <div class="intake-cap"><span>Your spec → Qualified cell / BMS</span><span>● Matching</span></div>
-      <svg viewBox="0 0 1200 200" aria-label="Battery spec streaming into the qualification core">
-        <g stroke="#241F19" stroke-width="1">
-          <line x1="160" y1="58" x2="1000" y2="58"/>
-          <line x1="160" y1="100" x2="1000" y2="100"/>
-          <line x1="160" y1="142" x2="1000" y2="142"/>
-          <line x1="1000" y1="58" x2="1058" y2="100"/>
-          <line x1="1000" y1="100" x2="1058" y2="100"/>
-          <line x1="1000" y1="142" x2="1058" y2="100"/>
-        </g>
-        <g font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="1.3" fill="#5C554A">
-          <text x="160" y="46">CELL / BMS SPEC →</text>
-          <text x="160" y="88">VENDOR OPTIONS →</text>
-          <text x="160" y="130">CYCLE-LIFE &amp; SAFETY VETTING →</text>
-        </g>
-        <g>
-          <rect x="132" y="51" width="14" height="14" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="132" y="93" width="14" height="14" fill="#1C1812" stroke="#2E2820"/>
-          <rect x="132" y="135" width="14" height="14" fill="#1C1812" stroke="#2E2820"/>
-        </g>
-        <!-- streaming particles -->
-        <g>
-          <rect x="156" y="52" width="12" height="12" fill="#E0913F" style="animation:stream 6s linear infinite;animation-delay:-.3s"/>
-          <rect x="156" y="52" width="12" height="12" fill="#E0913F" style="animation:stream 6s linear infinite;animation-delay:-2.3s"/>
-          <rect x="156" y="52" width="12" height="12" fill="#E0913F" style="animation:stream 6s linear infinite;animation-delay:-4.3s"/>
-          <rect x="156" y="94" width="12" height="12" fill="#E0913F" style="animation:stream 5.4s linear infinite;animation-delay:-1.1s"/>
-          <rect x="156" y="94" width="12" height="12" fill="#E0913F" style="animation:stream 5.4s linear infinite;animation-delay:-3.8s"/>
-          <rect x="156" y="136" width="12" height="12" fill="#E0913F" style="animation:stream 6.6s linear infinite;animation-delay:-2s"/>
-          <rect x="156" y="136" width="12" height="12" fill="#E0913F" style="animation:stream 6.6s linear infinite;animation-delay:-5s"/>
-        </g>
-        <!-- qualification core (hex, battery-top motif) -->
-        <polygon points="1072,66 1096,80 1096,108 1072,122 1048,108 1048,80"
-              fill="#0B0A08" stroke="#E0913F" stroke-width="1.5"/>
-        <circle cx="1072" cy="94" r="13" fill="#E0913F">
-          <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" repeatCount="indefinite"/>
-        </circle>
-        <text x="1072" y="180" text-anchor="middle" fill="#E0913F"
-              font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="2">QUALIFIED</text>
-      </svg>
+      <table class="spec-table reveal">
+        <tr><th>Sourcing scope</th><td>18650 · 4680 · Pouch · Custom BMS</td></tr>
+        <tr><th>Qualification basis</th><td>Cycle life · thermal safety · cert audit</td></tr>
+        <tr><th>Margin held</th><td class="hl">0% — no inventory, no markup</td></tr>
+        <tr><th>Reach</th><td>North America · Asia</td></tr>
+      </table>
     </div>
   </div>
 </section>
 
 <!-- ====================== TOOLBOX ====================== -->
-<section class="toolbox" id="toolbox">
+<section id="toolbox">
   <div class="shell">
     <div class="sec-head reveal">
-      <div class="sec-label"><span class="bar"></span><span class="mono tick">04 / Toolbox</span></div>
+      <div class="sec-label"><span class="idx">04</span><span class="mono">Toolbox</span></div>
       <h2>The battery manufacturing toolbox.</h2>
       <p>Free engineering tools built from real cell production-line experience — proof we
         know the unit operations behind the cells and packs we qualify, not just the part
@@ -1008,42 +862,13 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
   </div>
 </section>
 
-<!-- ====================== STAT BAND ====================== -->
-<section class="statband">
-  <div class="statband-grid">
-    <div class="cell reveal">
-      <div class="big" data-count="15" data-suffix="+">15+</div>
-      <div class="cap mono">Battery, BMS &amp; process programs · NA + Asia</div>
-    </div>
-    <div class="cell reveal">
-      <div class="big" data-count="9" data-suffix="–18 mo">9–18 mo</div>
-      <div class="cap mono">Realistic cell / pack qualification timeline</div>
-    </div>
-    <div class="cell reveal">
-      <div class="big"><span class="amber">R&amp;D</span></div>
-      <div class="cap mono">Small-volume cell &amp; BMS orders others ignore</div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== TEAM / CREDIBILITY ====================== -->
-<style>
-#team{padding:120px 0;position:relative;}
-#team .sec-sub{color:var(--muted);max-width:640px;margin-top:16px;font-size:15px;line-height:1.7;}
-.vm-team{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
-.vm-member{background:var(--surface);padding:32px;}
-.vm-role{color:var(--accent);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;font-family:var(--font-mono);}
-.vm-member h3{font-family:var(--font-display);font-size:19px;font-weight:600;margin-bottom:10px;color:var(--text);}
-.vm-member p{color:var(--muted);font-size:14px;line-height:1.65;}
-.vm-member.span2{grid-column:1 / -1;}
-@media(max-width:760px){.vm-team{grid-template-columns:1fr;}.vm-member.span2{grid-column:auto;}}
-</style>
+<!-- ====================== TEAM ====================== -->
 <section id="team">
   <div class="shell">
     <div class="sec-head reveal">
-      <div class="sec-label"><span class="bar"></span><span class="mono tick">05 / Team</span></div>
+      <div class="sec-label"><span class="idx">05</span><span class="mono">Team</span></div>
       <h2>Engineers who've built battery lines, not just sourced for them.</h2>
-      <p class="sec-sub">Our team has built cell and pack production lines and qualified
+      <p>Our team has built cell and pack production lines and qualified
         battery materials at leading EV and grid-storage companies across North America
         and Asia. When we qualify a cell or BMS vendor, it's on technical merit we earned
         on the factory floor — not a datasheet we forwarded.</p>
@@ -1090,17 +915,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
 </section>
 
 <!-- ====================== FAQ ====================== -->
-<style>
-#faq{padding:120px 0;position:relative;}
-.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
-.faq-item{background:var(--surface);padding:28px 32px;}
-.faq-item h3{font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:10px;color:var(--text);line-height:1.4;}
-.faq-item p{color:var(--muted);font-size:14px;line-height:1.7;}
-</style>
 <section id="faq" aria-label="Frequently asked questions">
   <div class="shell">
     <div class="sec-head reveal">
-      <div class="sec-label"><span class="bar"></span><span class="mono tick">06 / FAQ</span></div>
+      <div class="sec-label"><span class="idx">06</span><span class="mono">FAQ</span></div>
       <h2>Battery &amp; BMS sourcing questions, answered.</h2>
     </div>
     <div class="faq-list">
@@ -1133,18 +951,27 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
         <p>Technically qualified supplier shortlists, overseas-side QC, and bilingual (English /
           Mandarin) negotiation — removing the language, distance, and trust barriers.</p>
       </article>
+      <article class="faq-item reveal">
+        <h3>Do you source battery test equipment, R&amp;D materials, or laser equipment too?</h3>
+        <p>Yes. Beyond cells and BMS, we source and qualify battery test and lab equipment (cyclers,
+          environmental and thermal-safety test chambers), small-quantity R&amp;D battery materials
+          (electrode, electrolyte, separator), and laser equipment used in battery manufacturing —
+          tab welding and cell-can cutting systems.</p>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ====================== CTA / FOOTER ====================== -->
 <section class="cta" id="contact">
-  <div class="shell">
-    <h2 class="reveal">Need engineering eyes on a <span class="amber">cell or BMS?</span></h2>
-    <p class="sub reveal">Tell us the cell format or BMS you need to qualify.
-      We respond to qualified inquiries within two business days.</p>
-    <a href="mailto:info@voltamission.com" class="btn-primary reveal">info@voltamission.com →</a>
-    <a href="tel:+19423805666" class="btn-ghost reveal" style="margin-left:12px;">+1 (942) 380-5666</a>
+  <div class="shell cta-grid">
+    <div>
+      <h2 class="reveal">Need engineering eyes on a <em>cell or BMS?</em></h2>
+      <p class="sub reveal">Tell us the cell format or BMS you need to qualify.
+        We respond to qualified inquiries within two business days.</p>
+      <a href="mailto:info@voltamission.com" class="btn-primary reveal">info@voltamission.com →</a>
+      <a href="tel:+19423805666" class="btn-ghost reveal" style="margin-left:12px;">+1 (942) 380-5666</a>
+    </div>
   </div>
 </section>
 
@@ -1154,64 +981,21 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
     <div class="foot-links">
       <a href="mailto:info@voltamission.com" class="mono" style="color:inherit;text-decoration:none;">info@voltamission.com</a>
       <a href="tel:+19423805666" class="mono" style="color:inherit;text-decoration:none;">+1 (942) 380-5666</a>
-      <span class="mono tick">BATTERY &amp; BMS SOURCING</span>
+      <span class="mono">BATTERY &amp; BMS SOURCING</span>
     </div>
   </div>
 </footer>
 
 <script>
-// nav background on scroll
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
-
-// subtle parallax on hero cell diagram
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const heroSchematic=document.getElementById('heroSchematic');
-if(heroSchematic && !reduceMotion){
-  addEventListener('scroll',()=>{
-    const y = Math.min(scrollY,600);
-    heroSchematic.style.transform = `translateY(${y*0.08}px) rotate(${y*0.01}deg)`;
-  },{passive:true});
-}
-
-// reveal on scroll
 const io=new IntersectionObserver((es)=>{
   es.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('in');
-      // counters
-      e.target.querySelectorAll('[data-count]').forEach(el=>{
-        const end=+el.dataset.count, suf=el.dataset.suffix||'';
-        let t0=null;
-        const step=(t)=>{
-          if(!t0)t0=t;
-          const p=Math.min((t-t0)/1100,1);
-          el.textContent=Math.round(end*(1-Math.pow(1-p,3)))+suf;
-          if(p<1)requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      });
-      // readout bars
-      e.target.querySelectorAll('.ro-bar i').forEach(b=>{
-        setTimeout(()=>b.style.width=b.dataset.w,150);
-      });
       io.unobserve(e.target);
     }
   });
-},{threshold:0.2});
+},{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// magnetic hover on primary buttons
-if(!reduceMotion){
-  document.querySelectorAll('.btn-primary').forEach(btn=>{
-    btn.addEventListener('mousemove',(e)=>{
-      const r=btn.getBoundingClientRect();
-      const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
-      btn.style.transform=`translate(${x*0.12}px,${y*0.28}px)`;
-    });
-    btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
-  });
-}
 </script>
 </body>
 </html>
