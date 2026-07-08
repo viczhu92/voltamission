@@ -231,9 +231,9 @@
   --text:#F5F5F2;
   --muted:#A6A6A0;
   --faint:#6E6E68;
-  --accent:#E08A3C;
-  --accent-deep:#B5651D;
-  --accent-glow:rgba(224,138,60,0.22);
+  --accent:#2E96F5;
+  --accent-deep:#1C6FC9;
+  --accent-glow:rgba(46,150,245,0.24);
   --font-display:'General Sans','Helvetica Neue',sans-serif;
   --font-body:'General Sans','Helvetica Neue',sans-serif;
   --font-mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -486,21 +486,28 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
       <span class="fig-tag t2">QUALIFIED ✓</span>
       <svg viewBox="0 0 560 420" role="img" aria-label="Diagram: 18650 cylindrical cell wired to a BMS with temperature sensing, voltage monitoring, and communication output">
         <!-- cylindrical cell -->
-        <g class="pop p1" stroke="#E08A3C" stroke-width="1.4" fill="none">
+        <g class="pop p1" stroke="#2E96F5" stroke-width="1.4" fill="none">
           <rect x="30" y="70" width="70" height="230" rx="14" fill="#1A1A1F"/>
           <rect x="52" y="46" width="26" height="24" rx="4" fill="#1A1A1F"/>
           <line x1="30" y1="112" x2="100" y2="112" stroke="#3A3A3E" stroke-width="1"/>
-          <text x="65" y="60" text-anchor="middle" font-size="13" stroke="none" fill="#E08A3C">+</text>
+          <text x="65" y="60" text-anchor="middle" font-size="13" stroke="none" fill="#2E96F5">+</text>
         </g>
         <text class="pop p1" x="65" y="330" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#6E6E68">CELL</text>
 
         <!-- wire from cell to BMS -->
-        <path class="draw-line pop p1" d="M100,112 H190" stroke="#E08A3C" stroke-width="1.6" fill="none"/>
-        <path class="draw-line pop p1" d="M100,290 H150 V330 H190" stroke="#4A4A4E" stroke-width="1.6" fill="none"/>
+        <path id="wireTop" class="draw-line pop p1" d="M100,112 H190" stroke="#2E96F5" stroke-width="1.6" fill="none"/>
+        <path id="wireBottom" class="draw-line pop p1" d="M100,290 H150 V330 H190" stroke="#4A4A4E" stroke-width="1.6" fill="none"/>
+        <g class="pop p2 current-dots">
+          <circle r="3" fill="#2E96F5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0s"><mpath href="#wireTop"/></animateMotion></circle>
+          <circle r="3" fill="#2E96F5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0.6s"><mpath href="#wireTop"/></animateMotion></circle>
+          <circle r="3" fill="#2E96F5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="1.2s"><mpath href="#wireTop"/></animateMotion></circle>
+          <circle r="2.6" fill="#2E96F5" opacity="0.8"><animateMotion dur="2.2s" repeatCount="indefinite" begin="0.3s"><mpath href="#wireBottom"/></animateMotion></circle>
+          <circle r="2.6" fill="#2E96F5" opacity="0.8"><animateMotion dur="2.2s" repeatCount="indefinite" begin="1.4s"><mpath href="#wireBottom"/></animateMotion></circle>
+        </g>
 
         <!-- BMS PCB -->
         <g class="pop p2">
-          <rect x="190" y="90" width="170" height="220" rx="16" fill="#131316" stroke="#E08A3C" stroke-width="1.4"/>
+          <rect x="190" y="90" width="170" height="220" rx="16" fill="#131316" stroke="#2E96F5" stroke-width="1.4"/>
           <circle cx="204" cy="104" r="2.2" fill="none" stroke="#3A3A3E"/>
           <circle cx="346" cy="104" r="2.2" fill="none" stroke="#3A3A3E"/>
           <circle cx="204" cy="296" r="2.2" fill="none" stroke="#3A3A3E"/>
@@ -514,31 +521,36 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
           </g>
           <text x="271" y="180" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#A6A6A0">MCU +</text>
           <text x="271" y="192" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#A6A6A0">PROTECTION</text>
-          <circle class="led" cx="212" cy="240" r="3.4" fill="#E08A3C"/>
+          <circle class="led" cx="212" cy="240" r="3.4" fill="#2E96F5"/>
           <text x="222" y="243" font-family="IBM Plex Mono,monospace" font-size="8" fill="#6E6E68">STATUS</text>
           <text x="271" y="265" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">BMS PCB</text>
         </g>
 
         <!-- wires to readouts -->
-        <path class="draw-line pop p2" d="M360,130 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
-        <path class="draw-line pop p2" d="M360,195 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
-        <path class="draw-line pop p2" d="M360,260 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
+        <path id="wireTemp" class="draw-line pop p2" d="M360,130 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
+        <path id="wireVolt" class="draw-line pop p2" d="M360,195 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
+        <path id="wireComms" class="draw-line pop p2" d="M360,260 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
+        <g class="pop p3 current-dots">
+          <circle r="2.4" fill="#2E96F5"><animateMotion dur="1.6s" repeatCount="indefinite" begin="0s"><mpath href="#wireTemp"/></animateMotion></circle>
+          <circle r="2.4" fill="#2E96F5"><animateMotion dur="1.6s" repeatCount="indefinite" begin="0.4s"><mpath href="#wireVolt"/></animateMotion></circle>
+          <circle r="2.4" fill="#2E96F5"><animateMotion dur="1.6s" repeatCount="indefinite" begin="0.8s"><mpath href="#wireComms"/></animateMotion></circle>
+        </g>
 
         <!-- readouts -->
         <g class="pop p3">
           <rect x="400" y="104" width="140" height="50" rx="12" fill="#131316" stroke="#2A2A2E" stroke-width="1"/>
           <text x="416" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">TEMPERATURE</text>
-          <text class="js-count" data-target="25.6" data-suffix="°C" x="416" y="142" font-family="IBM Plex Mono,monospace" font-size="15" fill="#E08A3C">0°C</text>
+          <text class="js-count" data-target="25.6" data-suffix="°C" x="416" y="142" font-family="IBM Plex Mono,monospace" font-size="15" fill="#2E96F5">0°C</text>
         </g>
         <g class="pop p3">
           <rect x="400" y="170" width="140" height="50" rx="12" fill="#131316" stroke="#2A2A2E" stroke-width="1"/>
           <text x="416" y="190" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">CELL VOLTAGE</text>
-          <text class="js-count" data-target="4.20" data-suffix="V" x="416" y="208" font-family="IBM Plex Mono,monospace" font-size="15" fill="#E08A3C">0V</text>
+          <text class="js-count" data-target="4.20" data-suffix="V" x="416" y="208" font-family="IBM Plex Mono,monospace" font-size="15" fill="#2E96F5">0V</text>
         </g>
         <g class="pop p4">
           <rect x="400" y="236" width="140" height="50" rx="12" fill="#131316" stroke="#2A2A2E" stroke-width="1"/>
           <text x="416" y="256" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">COMMS OUT</text>
-          <text x="416" y="274" font-family="IBM Plex Mono,monospace" font-size="15" fill="#E08A3C">CAN/UART</text>
+          <text x="416" y="274" font-family="IBM Plex Mono,monospace" font-size="15" fill="#2E96F5">CAN/UART</text>
         </g>
 
         <text class="pop p4" x="400" y="335" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#6E6E68">Actual construction we inspect —</text>
@@ -565,30 +577,30 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
             <g stroke="#3A3A3E" stroke-width="1.2" fill="none">
               <rect x="20" y="20" width="420" height="320" rx="16"/>
             </g>
-            <g class="hi" data-stage="1" stroke="#E08A3C" stroke-width="1.4" fill="none">
+            <g class="hi" data-stage="1" stroke="#2E96F5" stroke-width="1.4" fill="none">
               <rect x="40" y="40" width="180" height="70" rx="10"/>
-              <text x="50" y="65" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">SPEC INTAKE</text>
+              <text x="50" y="65" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#2E96F5">SPEC INTAKE</text>
               <text x="50" y="82" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">18650 · 4680 · Pouch</text>
               <text x="50" y="95" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Cycle life · BMS spec</text>
             </g>
-            <g class="hi" data-stage="2" stroke="#E08A3C" stroke-width="1.4" fill="none">
+            <g class="hi" data-stage="2" stroke="#2E96F5" stroke-width="1.4" fill="none">
               <rect x="240" y="40" width="180" height="70" rx="10"/>
-              <text x="250" y="65" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">CERT AUDIT</text>
+              <text x="250" y="65" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#2E96F5">CERT AUDIT</text>
               <text x="250" y="82" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">UN38.3 · IEC 62133</text>
               <text x="250" y="95" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Factory audit record</text>
             </g>
-            <g class="hi" data-stage="3" stroke="#E08A3C" stroke-width="1.4" fill="none">
+            <g class="hi" data-stage="3" stroke="#2E96F5" stroke-width="1.4" fill="none">
               <rect x="40" y="140" width="180" height="90" rx="10"/>
-              <text x="50" y="165" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">SAMPLE &amp; CYCLE TEST</text>
+              <text x="50" y="165" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#2E96F5">SAMPLE &amp; CYCLE TEST</text>
               <text x="50" y="182" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Cycle life vs. claim</text>
               <text x="50" y="195" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Thermal-runaway margin</text>
               <text x="50" y="208" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">BMS protection accuracy</text>
             </g>
-            <g class="hi" data-stage="4" stroke="#E08A3C" stroke-width="1.4" fill="none">
+            <g class="hi" data-stage="4" stroke="#2E96F5" stroke-width="1.4" fill="none">
               <rect x="240" y="140" width="180" height="90" rx="10"/>
               <circle cx="330" cy="185" r="20" stroke-width="1.6"/>
               <path d="M321,185 l6,6 l12,-13" stroke-width="1.8"/>
-              <text x="250" y="245" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">QUALIFIED INTRODUCTION</text>
+              <text x="250" y="245" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#2E96F5">QUALIFIED INTRODUCTION</text>
             </g>
             <text x="50" y="300" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">NO INVENTORY HELD</text>
             <text x="50" y="315" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">NO MARGIN TAKEN</text>
@@ -637,7 +649,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
 
     <div class="qual-grid reveal">
       <div class="qual-card">
-        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><rect x="3" y="7" width="6" height="12" rx="2"/><rect x="12" y="4" width="9" height="15" rx="2"/></svg></div>
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><rect x="3" y="7" width="6" height="12" rx="2"/><rect x="12" y="4" width="9" height="15" rx="2"/></svg></div>
         <h3>Hard-to-find cell &amp; BMS component sourcing</h3>
         <div class="desc">Locate non-catalog 18650, 4680, and pouch cell suppliers, and
           custom BMS components, for small / R&amp;D-volume builds that distributors and
@@ -646,7 +658,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         <div class="tags"><span>R&amp;D volume</span><span>Hardware startups</span></div>
       </div>
       <div class="qual-card">
-        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9h8M8 13h5M9 17l2 2l4-4"/></svg></div>
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9h8M8 13h5M9 17l2 2l4-4"/></svg></div>
         <h3>Battery cell &amp; BMS technical qualification</h3>
         <div class="desc">Vet suppliers on technical merit — cycle life, energy density,
           thermal-runaway margin, protection-circuit accuracy, samples, and certification
@@ -656,7 +668,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         <div class="tags"><span>Decision-grade</span><span>Cert-verified</span></div>
       </div>
       <div class="qual-card">
-        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18a13 13 0 010-18"/></svg></div>
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18a13 13 0 010-18"/></svg></div>
         <h3>Cross-border cell &amp; BMS sourcing support</h3>
         <div class="desc">Qualified cell and BMS supplier shortlists, overseas-side QC, and
           bilingual negotiation — so North American teams can source battery components
@@ -665,7 +677,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         <div class="tags"><span>NA manufacturers</span><span>Cross-border</span></div>
       </div>
       <div class="qual-card">
-        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><rect x="6" y="9" width="9" height="11" rx="1"/><circle cx="10.5" cy="14" r="2.4"/><path d="M17 5l4 4l-9 9l-4 1l1-4z"/></svg></div>
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><rect x="6" y="9" width="9" height="11" rx="1"/><circle cx="10.5" cy="14" r="2.4"/><path d="M17 5l4 4l-9 9l-4 1l1-4z"/></svg></div>
         <h3>Battery test equipment, R&amp;D materials &amp; laser equipment sourcing</h3>
         <div class="desc">Source and qualify battery cyclers and environmental / thermal-safety
           test chambers, small-quantity electrode / electrolyte / separator materials, and laser
@@ -870,6 +882,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
 
 <script>
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduceMotion){document.querySelectorAll('.current-dots').forEach(g=>g.style.display='none');}
 
 // nav border on scroll
 const nav=document.getElementById('nav');
