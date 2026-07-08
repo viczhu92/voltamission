@@ -216,41 +216,39 @@
 }
 </script>
 
-<!-- IBM Plex Sans (body/display) + IBM Plex Mono (data) — one designed type family, engineering heritage -->
+<!-- General Sans (display/body) via Fontshare + IBM Plex Mono (data) via Google Fonts -->
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <style>
 :root{
-  --paper:#F5F3ED;
-  --paper-2:#FFFFFF;
-  --paper-3:#EDE9DD;
-  --ink:#182129;
-  --ink-soft:#54626D;
-  --ink-faint:#8B93980;
-  --line:#DAD4C5;
-  --line-cool:#CDD3D6;
-  --navy:#1D4E6B;
-  --navy-deep:#12303F;
-  --navy-fill:#C7DAE2;
-  --navy-fill-soft:#E4ECEF;
-  --signal:#B5551F;
-  --signal-soft:#F1E3D8;
-  --font-display:'IBM Plex Sans',sans-serif;
-  --font-body:'IBM Plex Sans',sans-serif;
+  --bg:#0A0A0C;
+  --bg-elev:#131316;
+  --bg-elev-2:#1A1A1F;
+  --line:#252529;
+  --text:#F5F5F2;
+  --muted:#A6A6A0;
+  --faint:#6E6E68;
+  --accent:#E08A3C;
+  --accent-deep:#B5651D;
+  --accent-glow:rgba(224,138,60,0.22);
+  --font-display:'General Sans','Helvetica Neue',sans-serif;
+  --font-body:'General Sans','Helvetica Neue',sans-serif;
   --font-mono:'IBM Plex Mono',ui-monospace,monospace;
   --max:1240px;
+  --radius:22px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{
-  background:var(--paper);
-  color:var(--ink);
+  background:var(--bg);
+  color:var(--text);
   font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.62;
+  font-size:17px;
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
@@ -259,208 +257,173 @@ a{color:inherit;text-decoration:none;}
   *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important;}
 }
 
-/* faint graph-paper grid — drafting-table convention, not decoration */
-body::before{
-  content:"";
-  position:fixed;inset:0;
-  background-image:
-    linear-gradient(#E4DECD 1px,transparent 1px),
-    linear-gradient(90deg,#E4DECD 1px,transparent 1px);
-  background-size:64px 64px;
-  opacity:0.5;
-  pointer-events:none;
-  z-index:0;
-  mask-image:linear-gradient(#000 0%,transparent 65%);
-}
+/* ambient glow field — soft, slow, not decorative-fake: just lighting */
+.glow-field{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.glow-field span{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.16;background:var(--accent);}
+.glow-field span.g1{width:560px;height:560px;top:-160px;right:-120px;}
+.glow-field span.g2{width:480px;height:480px;top:60%;left:-200px;opacity:0.10;}
 
 .shell{max-width:var(--max);margin:0 auto;padding:0 40px;position:relative;z-index:1;}
-
-.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);}
-
-/* ====================== DOCUMENT HEADER STRIP ====================== */
-.doc-bar{border-bottom:1px solid var(--line);background:var(--paper-3);}
-.doc-bar-inner{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:9px 40px;font-family:var(--font-mono);font-size:11px;
-  letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-soft);
-}
-.doc-bar-inner span:last-child{color:var(--signal);}
-@media(max-width:700px){.doc-bar-inner span:nth-child(2){display:none;}}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
 
 /* ====================== NAV ====================== */
-.nav{
-  position:sticky;top:0;z-index:50;background:rgba(245,243,237,0.92);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
-}
-.nav-inner{
-  max-width:var(--max);margin:0 auto;padding:18px 40px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand-logo{height:30px;width:auto;display:block;}
-.brand-name{font-family:var(--font-display);font-weight:600;font-size:16px;letter-spacing:0.01em;color:var(--navy-deep);}
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,10,12,0.72);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s ease;}
+.nav.scrolled{border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-logo{height:26px;width:auto;display:block;}
+.brand-name{font-family:var(--font-display);font-weight:600;font-size:16px;letter-spacing:-0.01em;}
 .nav-links{display:flex;align-items:center;gap:30px;}
-.nav-links a{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);transition:color .15s ease;}
-.nav-links a:hover{color:var(--navy);}
-.nav-cta{
-  font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--paper)!important;background:var(--signal);padding:9px 16px;
-  transition:opacity .15s ease;
-}
-.nav-cta:hover{opacity:0.85;}
+.nav-links a{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color .15s ease;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#0A0A0C!important;background:var(--accent);padding:10px 20px;border-radius:100px;transition:opacity .15s ease,transform .15s ease;}
+.nav-cta:hover{opacity:0.88;transform:translateY(-1px);}
 @media(max-width:900px){.nav-links a:not(.nav-cta){display:none;}}
 
 /* ====================== HERO ====================== */
-.hero{padding:64px 0 84px;}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-.doc-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--signal);margin-bottom:18px;display:block;}
-.hero h1{
-  font-family:var(--font-display);font-weight:700;
-  font-size:clamp(34px,3.8vw,52px);line-height:1.12;letter-spacing:-0.01em;
-  color:var(--navy-deep);
-}
-.hero h1 em{color:var(--signal);font-style:normal;}
-.hero-sub{margin-top:22px;max-width:480px;font-size:16px;line-height:1.65;color:var(--ink-soft);}
-.hero-sub strong{color:var(--ink);font-weight:600;}
-.hero-ctas{margin-top:32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-.btn-primary{
-  font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
-  background:var(--signal);color:var(--paper);font-weight:500;
-  padding:14px 22px;display:inline-flex;align-items:center;gap:8px;
-  transition:opacity .15s ease;
-}
-.btn-primary:hover{opacity:0.85;}
-.btn-ghost{
-  font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);
-  border-bottom:1px solid var(--line-cool);padding-bottom:3px;transition:color .15s ease,border-color .15s ease;
-}
-.btn-ghost:hover{color:var(--navy);border-color:var(--navy);}
+.hero{padding:76px 0 60px;}
+.hero-grid{display:grid;grid-template-columns:1.08fr 1fr;gap:56px;align-items:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;margin-bottom:28px;}
+.eyebrow .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent);}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(38px,4.6vw,66px);line-height:1.06;letter-spacing:-0.02em;}
+.hero h1 .word{display:inline-block;opacity:0;transform:translateY(24px);animation:wordUp .8s cubic-bezier(.16,1,.3,1) forwards;}
+.hero h1 .accent{color:var(--accent);}
+@keyframes wordUp{to{opacity:1;transform:none;}}
+.hero-sub{margin-top:24px;max-width:480px;font-size:17px;line-height:1.65;color:var(--muted);opacity:0;animation:rise .8s .7s ease forwards;}
+.hero-sub strong{color:var(--text);font-weight:500;}
+.hero-ctas{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;opacity:0;animation:rise .8s .85s ease forwards;}
+.btn-primary{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;background:var(--accent);color:#0A0A0C;font-weight:600;padding:15px 24px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;transition:transform .18s ease,box-shadow .18s ease;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px var(--accent-glow);}
+.btn-ghost{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:3px;transition:color .15s ease,border-color .15s ease;}
+.btn-ghost:hover{color:var(--text);border-color:var(--accent);}
 
-/* spec strip: parameter table, not a stat-brag band */
-.spec-strip{margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.spec-row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;}
-.spec-row:last-child{border-bottom:0;}
-.spec-row dt{font-family:var(--font-mono);color:var(--ink-soft);letter-spacing:0.02em;}
-.spec-row dd{font-family:var(--font-mono);color:var(--navy-deep);font-weight:500;text-align:right;}
-.spec-row dd.hl{color:var(--signal);}
+.claims{margin-top:52px;display:flex;gap:34px;flex-wrap:wrap;opacity:0;animation:rise .8s 1s ease forwards;}
+.claim{display:flex;align-items:flex-start;gap:11px;max-width:190px;}
+.claim .ci{width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
+.claim h4{font-size:13.5px;font-weight:600;}
+.claim p{font-size:12.5px;color:var(--faint);margin-top:2px;line-height:1.4;}
 
-/* ---------- FIG PANEL (the real diagram) ---------- */
-.fig-panel{border:1px solid var(--line-cool);background:var(--paper-2);}
+@keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+
+/* ---------- HERO FIGURE (accurate, animated) ---------- */
+.fig-panel{position:relative;border-radius:var(--radius);background:linear-gradient(180deg,var(--bg-elev),var(--bg-elev-2));border:1px solid var(--line);padding:20px;opacity:0;animation:rise 1s .3s ease forwards;box-shadow:0 30px 80px rgba(0,0,0,0.45);}
 .fig-panel svg{display:block;width:100%;height:auto;}
-.fig-caption{
-  border-top:1px solid var(--line-cool);padding:12px 18px;
-  font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);line-height:1.6;
-}
-.fig-caption b{color:var(--navy-deep);}
-
-/* reveal on scroll — functional only */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
-.reveal.in{opacity:1;transform:none;}
+.fig-tag{position:absolute;font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);}
+.fig-tag.t1{top:14px;left:14px;}
+.fig-tag.t2{top:14px;right:14px;color:var(--accent);}
+.led{animation:ledBlink 2.2s ease-in-out infinite;}
+@keyframes ledBlink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.draw-line{stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);}
+.fig-panel.in .draw-line{stroke-dashoffset:0;}
+.fig-panel.in .draw-line:nth-of-type(2){transition-delay:.2s;}
+.fig-panel.in .draw-line:nth-of-type(3){transition-delay:.4s;}
+.pop{opacity:0;transform:scale(0.94);transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1);}
+.fig-panel.in .pop{opacity:1;transform:none;}
+.fig-panel.in .pop.p1{transition-delay:.5s;}
+.fig-panel.in .pop.p2{transition-delay:.75s;}
+.fig-panel.in .pop.p3{transition-delay:1s;}
+.fig-panel.in .pop.p4{transition-delay:1.2s;}
 
 /* ====================== SECTION SHELL ====================== */
-section{padding:88px 0;border-top:1px solid var(--line);}
-.hero{border-top:0;}
-.sec-head{margin-bottom:48px;max-width:720px;}
-.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.sec-label .idx{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--signal);}
-.sec-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.15;color:var(--navy-deep);letter-spacing:-0.01em;}
-.sec-head p{margin-top:16px;color:var(--ink-soft);font-size:15.5px;max-width:560px;}
+section{padding:130px 0;}
+.sec-head{margin-bottom:60px;max-width:680px;}
+.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.sec-label .idx{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--accent);}
+.sec-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.4vw,44px);line-height:1.14;letter-spacing:-0.01em;}
+.sec-head p{margin-top:18px;color:var(--muted);font-size:16px;max-width:560px;}
 
-/* ---------- PROCEDURE (how it works) ---------- */
-.proc-list{border-top:1px solid var(--line);}
-.proc-step{display:grid;grid-template-columns:90px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);}
-.proc-step .pnum{font-family:var(--font-mono);font-size:13px;color:var(--signal);}
-.proc-step h3{font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--navy-deep);}
-.proc-step p{margin-top:8px;color:var(--ink-soft);font-size:14.5px;max-width:640px;}
-@media(max-width:640px){.proc-step{grid-template-columns:1fr;gap:6px;}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
 
-/* ---------- WHAT WE QUALIFY (capabilities) ---------- */
-.qual-row{display:grid;grid-template-columns:120px 1fr 1.05fr 160px;gap:26px;align-items:start;padding:30px 0;border-bottom:1px solid var(--line);}
-.qual-row:first-child{border-top:1px solid var(--line);}
-.qual-icon{width:120px;height:80px;border:1px solid var(--line-cool);background:var(--paper-2);display:flex;align-items:center;justify-content:center;}
-.qual-row h3{font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--navy-deep);line-height:1.2;}
-.qual-row .desc{color:var(--ink-soft);font-size:14.5px;}
-.qual-link{display:table;margin-top:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid transparent;}
-.qual-link:hover{border-color:var(--signal);}
-.qual-row .tags{display:flex;flex-direction:column;gap:6px;align-items:flex-end;text-align:right;}
-.qual-row .tags span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
-@media(max-width:760px){.qual-row{grid-template-columns:80px 1fr;}.qual-row .desc,.qual-row .tags{grid-column:2;}.qual-row .tags{align-items:flex-start;text-align:left;}}
+/* ---------- SCROLLYTELLING: how it works ---------- */
+.scrolly{background:var(--bg-elev);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.scrolly-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+.scrolly-sticky{position:sticky;top:110px;align-self:start;height:fit-content;}
+.scrolly-steps{display:flex;flex-direction:column;gap:0;}
+.scrolly-step{padding:70px 0;border-top:1px solid var(--line);opacity:0.32;transition:opacity .4s ease;}
+.scrolly-step:first-child{border-top:0;}
+.scrolly-step.active{opacity:1;}
+.scrolly-step .pnum{font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:0.08em;}
+.scrolly-step h3{font-family:var(--font-display);font-weight:600;font-size:24px;margin-top:12px;}
+.scrolly-step p{margin-top:10px;color:var(--muted);font-size:15px;max-width:420px;}
+.scrolly-diagram{border-radius:var(--radius);background:linear-gradient(180deg,var(--bg-elev-2),var(--bg));border:1px solid var(--line);padding:26px;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.scrolly-diagram svg{display:block;width:100%;height:auto;}
+.hi{opacity:0.25;transition:opacity .4s ease;}
+.hi.active{opacity:1;}
+@media(max-width:860px){.scrolly-grid{grid-template-columns:1fr;}.scrolly-sticky{position:static;margin-bottom:36px;}}
 
-/* ---------- WHY INDEPENDENT (spec table) ---------- */
+/* ---------- WHAT WE QUALIFY ---------- */
+.qual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+.qual-card{background:var(--bg-elev);padding:36px;transition:background .2s ease;}
+.qual-card:hover{background:var(--bg-elev-2);}
+.qual-card .qi{width:52px;height:52px;border-radius:14px;background:var(--bg-elev-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.qual-card h3{font-family:var(--font-display);font-weight:600;font-size:19px;line-height:1.25;}
+.qual-card .desc{margin-top:12px;color:var(--muted);font-size:14.5px;line-height:1.6;}
+.qual-link{display:table;margin-top:16px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;}
+.qual-link:hover{border-color:var(--accent);}
+.qual-card .tags{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+.qual-card .tags span{font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line);border-radius:100px;padding:4px 10px;}
+@media(max-width:760px){.qual-grid{grid-template-columns:1fr;}}
+
+/* ---------- WHY INDEPENDENT ---------- */
 .why-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start;}
-.why-grid h2{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.18;color:var(--navy-deep);letter-spacing:-0.01em;}
-.why-grid h2 em{color:var(--signal);font-style:normal;}
-.why-grid p{margin-top:18px;color:var(--ink-soft);font-size:15.5px;max-width:480px;}
-.spec-table{width:100%;border-collapse:collapse;border:1px solid var(--line-cool);background:var(--paper-2);}
-.spec-table tr:not(:last-child) th,.spec-table tr:not(:last-child) td{border-bottom:1px solid var(--line);}
-.spec-table th,.spec-table td{padding:16px 18px;text-align:left;font-size:13.5px;}
-.spec-table th{font-family:var(--font-mono);font-weight:500;color:var(--ink-soft);letter-spacing:0.02em;width:46%;}
-.spec-table td{font-family:var(--font-mono);color:var(--navy-deep);}
-.spec-table td.hl{color:var(--signal);font-weight:500;}
+.why-grid h2{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.4vw,44px);line-height:1.16;letter-spacing:-0.01em;}
+.why-grid h2 .accent{color:var(--accent);}
+.why-grid p{margin-top:18px;color:var(--muted);font-size:16px;max-width:480px;}
+.spec-card{border-radius:var(--radius);border:1px solid var(--line);background:var(--bg-elev);overflow:hidden;}
+.spec-row{display:flex;justify-content:space-between;gap:16px;padding:20px 26px;border-bottom:1px solid var(--line);font-size:14px;}
+.spec-row:last-child{border-bottom:0;}
+.spec-row .k{font-family:var(--font-mono);color:var(--muted);}
+.spec-row .v{font-family:var(--font-mono);color:var(--text);text-align:right;}
+.spec-row .v.hl{color:var(--accent);}
 @media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:32px;}}
 
 /* ---------- TOOLBOX ---------- */
-.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-cool);border:1px solid var(--line-cool);}
-.tool-card{background:var(--paper-2);padding:26px 24px 22px;display:flex;flex-direction:column;transition:background .15s ease;}
-.tool-card:hover{background:var(--navy-fill-soft);}
-.tool-card .tnum{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--signal);}
-.tool-card h3{font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--navy-deep);margin-top:14px;}
-.tool-card p{margin-top:10px;color:var(--ink-soft);font-size:13.5px;line-height:1.6;flex:1;}
-.tool-card .ttag{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:18px;}
-.tool-launch{
-  margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
-  font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--navy-deep);display:flex;align-items:center;justify-content:space-between;
-}
+.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.tool-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-elev);padding:28px 26px 24px;display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease;}
+.tool-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+.tool-card .tnum{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--accent);}
+.tool-card h3{font-family:var(--font-display);font-weight:600;font-size:18px;margin-top:14px;}
+.tool-card p{margin-top:10px;color:var(--muted);font-size:13.5px;line-height:1.6;flex:1;}
+.tool-card .ttag{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:18px;}
+.tool-launch{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text);display:flex;align-items:center;justify-content:space-between;}
 @media(max-width:760px){.tool-grid{grid-template-columns:1fr;}}
 
 /* ---------- TEAM ---------- */
-.vm-team{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-cool);border:1px solid var(--line-cool);margin-top:8px;}
-.vm-member{background:var(--paper-2);padding:28px;}
-.vm-role{color:var(--signal);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-mono);}
-.vm-member h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:8px;color:var(--navy-deep);}
-.vm-member p{color:var(--ink-soft);font-size:13.5px;line-height:1.6;}
+.vm-team{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:8px;}
+.vm-member{background:var(--bg-elev);padding:30px;}
+.vm-role{color:var(--accent);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-mono);}
+.vm-member h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:8px;}
+.vm-member p{color:var(--muted);font-size:13.5px;line-height:1.6;}
 .vm-member.span2{grid-column:1 / -1;}
 @media(max-width:760px){.vm-team{grid-template-columns:1fr;}.vm-member.span2{grid-column:auto;}}
 
 /* ---------- FAQ ---------- */
-.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--line-cool);border:1px solid var(--line-cool);margin-top:8px;}
-.faq-item{background:var(--paper-2);padding:24px 28px;}
-.faq-item h3{font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:8px;color:var(--navy-deep);line-height:1.4;}
-.faq-item p{color:var(--ink-soft);font-size:13.5px;line-height:1.65;}
+.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:8px;}
+.faq-item{background:var(--bg-elev);padding:26px 30px;}
+.faq-item h3{font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:8px;line-height:1.4;}
+.faq-item p{color:var(--muted);font-size:13.5px;line-height:1.65;}
 
 /* ---------- CTA / FOOTER ---------- */
-.cta{text-align:left;}
-.cta-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;}
-.cta h2{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.15;color:var(--navy-deep);letter-spacing:-0.01em;}
-.cta h2 em{color:var(--signal);font-style:normal;}
-.cta .sub{margin-top:14px;color:var(--ink-soft);font-size:15px;max-width:440px;}
-.cta .btn-primary{margin-top:26px;}
-footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3);}
+.cta h2{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,5.6vw,72px);line-height:1.05;letter-spacing:-0.02em;}
+.cta h2 .accent{color:var(--accent);}
+.cta .sub{margin-top:20px;color:var(--muted);font-size:16px;max-width:460px;}
+.cta .btn-primary{margin-top:32px;}
+footer{border-top:1px solid var(--line);padding:36px 0;}
 .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
-.foot-inner .mono{color:var(--ink-soft);}
+.foot-inner .mono{color:var(--faint);}
 .foot-links{display:flex;gap:24px;}
 
-@keyframes ledBlink{0%,100%{opacity:1;}50%{opacity:0.25;}}
-.led{animation:ledBlink 2.2s ease-in-out infinite;}
-
 @media(max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:36px;}
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
   .shell{padding:0 22px;}
   .nav-inner{padding:16px 22px;}
-  .doc-bar-inner{padding:9px 22px;}
 }
 </style>
 </head>
 <body>
 
-<div class="doc-bar">
-  <div class="doc-bar-inner">
-    <span>VOLTAMISSION · TECHNICAL REFERENCE</span>
-    <span>BATTERY CELL &amp; BMS QUALIFICATION</span>
-    <span>REV 2026.07 · TORONTO, CA</span>
-  </div>
-</div>
+<div class="glow-field" aria-hidden="true"><span class="g1"></span><span class="g2"></span></div>
 
 <header class="nav" id="nav">
   <div class="nav-inner">
@@ -484,195 +447,176 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
 <section class="hero">
   <div class="shell hero-grid">
     <div class="hero-copy">
-      <span class="doc-tag">Battery Cell &amp; BMS Qualification · No Inventory · No Margin</span>
-      <h1>The battery engineer you don't have — for cells &amp; BMS you can't get wrong.</h1>
+      <div class="eyebrow"><span class="dot"></span><span class="mono">Battery Cell &amp; BMS Qualification</span></div>
+      <h1>
+        <span class="word" style="animation-delay:.05s">The</span>
+        <span class="word" style="animation-delay:.12s">battery</span>
+        <span class="word" style="animation-delay:.19s">engineer</span>
+        <span class="word" style="animation-delay:.26s">you</span>
+        <span class="word" style="animation-delay:.33s">don't</span>
+        <span class="word accent" style="animation-delay:.4s">have.</span>
+      </h1>
       <p class="hero-sub">
         <strong>Independent qualification, not a datasheet.</strong> We source and vet
         18650, 4680 cylindrical, and pouch cells — plus custom BMS — on cycle life,
-        thermal safety, and real test data. We hold no inventory and take no margin:
-        the qualification is the product.
+        thermal safety, and real test data.
       </p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">Request an engagement →</a>
         <a href="#how" class="btn-ghost">See the qualification process</a>
       </div>
-      <dl class="spec-strip">
-        <div class="spec-row"><dt>Cell formats supported</dt><dd>18650 · 4680 · Pouch</dd></div>
-        <div class="spec-row"><dt>Margin / inventory held</dt><dd class="hl">0%</dd></div>
-        <div class="spec-row"><dt>Engineers on qualification team</dt><dd>5</dd></div>
-      </dl>
+      <div class="claims">
+        <div class="claim">
+          <span class="ci"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></span>
+          <div><h4>Independent</h4><p>No inventory, no margin.</p></div>
+        </div>
+        <div class="claim">
+          <span class="ci"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3l7 3v6c0 4.4-3 7.5-7 9-4-1.5-7-4.6-7-9V6z"/></svg></span>
+          <div><h4>Rigorous</h4><p>Cycle-life &amp; cert verified.</p></div>
+        </div>
+        <div class="claim">
+          <span class="ci"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
+          <div><h4>Fast</h4><p>Decision-grade in days.</p></div>
+        </div>
+      </div>
     </div>
 
-    <figure class="fig-panel reveal">
-      <svg viewBox="0 0 640 460" role="img" aria-label="Diagram: cylindrical cell pack wired to a BMS with temperature sensing, voltage monitoring, and communication output">
-        <g font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="0.6" fill="#54626D">
-          <text x="20" y="26">CELL PACK (18650 / 4680)</text>
-          <text x="300" y="26">BMS PCB</text>
+    <figure class="fig-panel" id="heroFig">
+      <span class="fig-tag t1">18650 · 3.6V</span>
+      <span class="fig-tag t2">QUALIFIED ✓</span>
+      <svg viewBox="0 0 560 420" role="img" aria-label="Diagram: 18650 cylindrical cell wired to a BMS with temperature sensing, voltage monitoring, and communication output">
+        <!-- cylindrical cell -->
+        <g class="pop p1" stroke="#E08A3C" stroke-width="1.4" fill="none">
+          <rect x="30" y="70" width="70" height="230" rx="14" fill="#1A1A1F"/>
+          <rect x="52" y="46" width="26" height="24" rx="4" fill="#1A1A1F"/>
+          <line x1="30" y1="112" x2="100" y2="112" stroke="#3A3A3E" stroke-width="1"/>
+          <text x="65" y="60" text-anchor="middle" font-size="13" stroke="none" fill="#E08A3C">+</text>
+        </g>
+        <text class="pop p1" x="65" y="330" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#6E6E68">CELL</text>
+
+        <!-- wire from cell to BMS -->
+        <path class="draw-line pop p1" d="M100,112 H190" stroke="#E08A3C" stroke-width="1.6" fill="none"/>
+        <path class="draw-line pop p1" d="M100,290 H150 V330 H190" stroke="#4A4A4E" stroke-width="1.6" fill="none"/>
+
+        <!-- BMS PCB -->
+        <g class="pop p2">
+          <rect x="190" y="90" width="170" height="220" rx="16" fill="#131316" stroke="#E08A3C" stroke-width="1.4"/>
+          <circle cx="204" cy="104" r="2.2" fill="none" stroke="#3A3A3E"/>
+          <circle cx="346" cy="104" r="2.2" fill="none" stroke="#3A3A3E"/>
+          <circle cx="204" cy="296" r="2.2" fill="none" stroke="#3A3A3E"/>
+          <circle cx="346" cy="296" r="2.2" fill="none" stroke="#3A3A3E"/>
+          <rect x="228" y="150" width="86" height="70" rx="6" fill="#1A1A1F" stroke="#4A4A4E" stroke-width="1"/>
+          <g stroke="#4A4A4E" stroke-width="1">
+            <line x1="240" y1="150" x2="240" y2="140"/><line x1="256" y1="150" x2="256" y2="140"/>
+            <line x1="272" y1="150" x2="272" y2="140"/><line x1="288" y1="150" x2="288" y2="140"/>
+            <line x1="240" y1="220" x2="240" y2="230"/><line x1="256" y1="220" x2="256" y2="230"/>
+            <line x1="272" y1="220" x2="272" y2="230"/><line x1="288" y1="220" x2="288" y2="230"/>
+          </g>
+          <text x="271" y="180" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#A6A6A0">MCU +</text>
+          <text x="271" y="192" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#A6A6A0">PROTECTION</text>
+          <circle class="led" cx="212" cy="240" r="3.4" fill="#E08A3C"/>
+          <text x="222" y="243" font-family="IBM Plex Mono,monospace" font-size="8" fill="#6E6E68">STATUS</text>
+          <text x="271" y="265" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">BMS PCB</text>
         </g>
 
-        <!-- cylindrical cells, 3x2 grid, drawn as real cylinders (can + crimped +terminal) -->
-        <g stroke="#1D4E6B" stroke-width="1.4" fill="#C7DAE2">
-          <!-- row 1 -->
-          <g transform="translate(20,40)">
-            <rect x="8" y="10" width="15" height="8" rx="2" fill="#C7DAE2"/>
-            <rect x="0" y="18" width="31" height="58" rx="5"/>
-            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
-            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
-          </g>
-          <g transform="translate(64,40)">
-            <rect x="8" y="10" width="15" height="8" rx="2"/>
-            <rect x="0" y="18" width="31" height="58" rx="5"/>
-            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
-            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
-          </g>
-          <g transform="translate(108,40)">
-            <rect x="8" y="10" width="15" height="8" rx="2"/>
-            <rect x="0" y="18" width="31" height="58" rx="5"/>
-            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
-            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
-          </g>
-          <!-- row 2 -->
-          <g transform="translate(20,132)">
-            <rect x="8" y="10" width="15" height="8" rx="2"/>
-            <rect x="0" y="18" width="31" height="58" rx="5"/>
-            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
-            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
-          </g>
-          <g transform="translate(64,132)">
-            <rect x="8" y="10" width="15" height="8" rx="2"/>
-            <rect x="0" y="18" width="31" height="58" rx="5"/>
-            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
-            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
-          </g>
-          <g transform="translate(108,132)">
-            <rect x="8" y="10" width="15" height="8" rx="2"/>
-            <rect x="0" y="18" width="31" height="58" rx="5"/>
-            <line x1="0" y1="30" x2="31" y2="30" stroke="#1D4E6B" stroke-width="1"/>
-            <text x="15.5" y="15" text-anchor="middle" font-size="8" stroke="none" fill="#12303F">+</text>
-          </g>
+        <!-- wires to readouts -->
+        <path class="draw-line pop p2" d="M360,130 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
+        <path class="draw-line pop p2" d="M360,195 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
+        <path class="draw-line pop p2" d="M360,260 H400" stroke="#4A4A4E" stroke-width="1.4" fill="none"/>
+
+        <!-- readouts -->
+        <g class="pop p3">
+          <rect x="400" y="104" width="140" height="50" rx="12" fill="#131316" stroke="#2A2A2E" stroke-width="1"/>
+          <text x="416" y="124" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">TEMPERATURE</text>
+          <text class="js-count" data-target="25.6" data-suffix="°C" x="416" y="142" font-family="IBM Plex Mono,monospace" font-size="15" fill="#E08A3C">0°C</text>
+        </g>
+        <g class="pop p3">
+          <rect x="400" y="170" width="140" height="50" rx="12" fill="#131316" stroke="#2A2A2E" stroke-width="1"/>
+          <text x="416" y="190" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">CELL VOLTAGE</text>
+          <text class="js-count" data-target="4.20" data-suffix="V" x="416" y="208" font-family="IBM Plex Mono,monospace" font-size="15" fill="#E08A3C">0V</text>
+        </g>
+        <g class="pop p4">
+          <rect x="400" y="236" width="140" height="50" rx="12" fill="#131316" stroke="#2A2A2E" stroke-width="1"/>
+          <text x="416" y="256" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">COMMS OUT</text>
+          <text x="416" y="274" font-family="IBM Plex Mono,monospace" font-size="15" fill="#E08A3C">CAN/UART</text>
         </g>
 
-        <!-- balance leads from each cell to BMS -->
-        <g stroke="#8FA9B6" stroke-width="1" fill="none">
-          <path d="M51,58 H300 V78"/>
-          <path d="M95,58 H310 V78" />
-          <path d="M139,150 H320 V180"/>
-          <path d="M51,150 H290 V180"/>
-        </g>
-
-        <!-- BMS PCB block -->
-        <g transform="translate(300,60)">
-          <rect x="0" y="0" width="150" height="130" fill="#FFFFFF" stroke="#1D4E6B" stroke-width="1.4"/>
-          <circle cx="8" cy="8" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
-          <circle cx="142" cy="8" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
-          <circle cx="8" cy="122" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
-          <circle cx="142" cy="122" r="2.4" fill="none" stroke="#1D4E6B" stroke-width="1"/>
-          <!-- MCU / protection IC -->
-          <rect x="45" y="38" width="60" height="46" fill="#E4ECEF" stroke="#1D4E6B" stroke-width="1.2"/>
-          <g stroke="#1D4E6B" stroke-width="1">
-            <line x1="52" y1="38" x2="52" y2="30"/><line x1="65" y1="38" x2="65" y2="30"/>
-            <line x1="78" y1="38" x2="78" y2="30"/><line x1="91" y1="38" x2="91" y2="30"/>
-            <line x1="52" y1="84" x2="52" y2="92"/><line x1="65" y1="84" x2="65" y2="92"/>
-            <line x1="78" y1="84" x2="78" y2="92"/><line x1="91" y1="84" x2="91" y2="92"/>
-          </g>
-          <text x="75" y="64" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#12303F">MCU +</text>
-          <text x="75" y="75" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#12303F">PROTECTION</text>
-          <!-- status LED -->
-          <circle class="led" cx="16" cy="20" r="3" fill="#B5551F"/>
-          <text x="24" y="23" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#54626D">STATUS</text>
-          <text x="75" y="116" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#54626D">BMS PCB</text>
-        </g>
-
-        <!-- outputs: temp sensor, voltage monitor, comms -->
-        <g stroke="#1D4E6B" stroke-width="1.2" fill="#FFFFFF">
-          <rect x="480" y="20" width="140" height="46" />
-          <rect x="480" y="76" width="140" height="46" />
-          <rect x="480" y="132" width="140" height="46" />
-        </g>
-        <g font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#12303F">
-          <text x="492" y="40">TEMP SENSOR</text>
-          <text x="492" y="55" font-size="12" fill="#B5551F">25°C</text>
-          <text x="492" y="96">CELL VOLTAGE MONITOR</text>
-          <text x="492" y="111" font-size="12" fill="#B5551F">4.20 V</text>
-          <text x="492" y="152">COMMS OUT</text>
-          <text x="492" y="167" font-size="12" fill="#B5551F">CAN / UART</text>
-        </g>
-        <g stroke="#8FA9B6" stroke-width="1" fill="none">
-          <path d="M450,90 H465 V43 H480"/>
-          <path d="M450,90 H465 V99 H480"/>
-          <path d="M450,90 H465 V155 H480"/>
-        </g>
-
-        <!-- pouch cell inset, drawn correctly: flat sealed foil pack with tabs, not a circle -->
-        <g transform="translate(20,250)">
-          <text x="0" y="0" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="0.6" fill="#54626D">POUCH CELL (CORRECT FORM FACTOR)</text>
-          <rect x="0" y="14" width="140" height="90" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.4"/>
-          <rect x="0" y="14" width="140" height="8" fill="none" stroke="#1D4E6B" stroke-width="1" stroke-dasharray="3,2"/>
-          <rect x="0" y="96" width="140" height="8" fill="none" stroke="#1D4E6B" stroke-width="1" stroke-dasharray="3,2"/>
-          <rect x="24" y="0" width="22" height="16" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.2"/>
-          <rect x="94" y="0" width="22" height="16" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.2"/>
-          <text x="35" y="-4" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#12303F">+</text>
-          <text x="105" y="-4" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#12303F">−</text>
-          <text x="0" y="128" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#54626D">LAMINATE FOIL · HEAT-SEALED EDGE</text>
-          <text x="0" y="140" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#54626D">TAB LEADS, NOT CIRCULAR</text>
-        </g>
-
-        <g font-family="IBM Plex Mono,monospace" font-size="9" fill="#8B9398">
-          <text x="300" y="250">Cylindrical cells: steel can, crimped</text>
-          <text x="300" y="264">+terminal cap — circular cross-section.</text>
-          <text x="300" y="284">Pouch cells: flat stacked foil pack —</text>
-          <text x="300" y="298">NOT circular. Form factor drives fixture,</text>
-          <text x="300" y="312">balance-lead routing, and thermal design.</text>
-        </g>
+        <text class="pop p4" x="400" y="335" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#6E6E68">Actual construction we inspect —</text>
+        <text class="pop p4" x="400" y="347" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#6E6E68">not a stock render.</text>
       </svg>
-      <figcaption class="fig-caption">
-        <b>FIG. 1</b> — What we qualify: cylindrical (18650/4680) and pouch cell construction,
-        wired to BMS protection, cell-balancing, temperature sensing, and communication output.
-        Not a stock image — drawn to the actual construction we inspect.
-      </figcaption>
     </figure>
   </div>
 </section>
 
-<!-- ====================== HOW IT WORKS (procedure) ====================== -->
-<section id="how">
+<!-- ====================== HOW IT WORKS (scrollytelling) ====================== -->
+<section class="scrolly" id="how">
   <div class="shell">
     <div class="sec-head reveal">
       <div class="sec-label"><span class="idx">01</span><span class="mono">How it works</span></div>
       <h2>A qualification protocol, not a sales pitch.</h2>
-      <p>Every engagement follows the same four steps — the same protocol our
-        engineers used qualifying cells and BMS on production lines, applied to
-        your supplier before you commit a purchase order.</p>
+      <p>The same four-step protocol our engineers used qualifying cells and BMS on
+        production lines — applied to your supplier before you commit a purchase order.</p>
     </div>
-    <div class="proc-list">
-      <div class="proc-step reveal">
-        <div class="pnum">STEP 01</div>
-        <div>
+
+    <div class="scrolly-grid">
+      <div class="scrolly-sticky">
+        <div class="scrolly-diagram">
+          <svg viewBox="0 0 460 360" role="img" aria-label="Qualification protocol diagram highlighting spec intake, certification audit, sample testing, and qualified introduction">
+            <g stroke="#3A3A3E" stroke-width="1.2" fill="none">
+              <rect x="20" y="20" width="420" height="320" rx="16"/>
+            </g>
+            <g class="hi" data-stage="1" stroke="#E08A3C" stroke-width="1.4" fill="none">
+              <rect x="40" y="40" width="180" height="70" rx="10"/>
+              <text x="50" y="65" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">SPEC INTAKE</text>
+              <text x="50" y="82" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">18650 · 4680 · Pouch</text>
+              <text x="50" y="95" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Cycle life · BMS spec</text>
+            </g>
+            <g class="hi" data-stage="2" stroke="#E08A3C" stroke-width="1.4" fill="none">
+              <rect x="240" y="40" width="180" height="70" rx="10"/>
+              <text x="250" y="65" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">CERT AUDIT</text>
+              <text x="250" y="82" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">UN38.3 · IEC 62133</text>
+              <text x="250" y="95" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Factory audit record</text>
+            </g>
+            <g class="hi" data-stage="3" stroke="#E08A3C" stroke-width="1.4" fill="none">
+              <rect x="40" y="140" width="180" height="90" rx="10"/>
+              <text x="50" y="165" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">SAMPLE &amp; CYCLE TEST</text>
+              <text x="50" y="182" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Cycle life vs. claim</text>
+              <text x="50" y="195" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">Thermal-runaway margin</text>
+              <text x="50" y="208" font-family="IBM Plex Mono,monospace" font-size="9" stroke="none" fill="#A6A6A0">BMS protection accuracy</text>
+            </g>
+            <g class="hi" data-stage="4" stroke="#E08A3C" stroke-width="1.4" fill="none">
+              <rect x="240" y="140" width="180" height="90" rx="10"/>
+              <circle cx="330" cy="185" r="20" stroke-width="1.6"/>
+              <path d="M321,185 l6,6 l12,-13" stroke-width="1.8"/>
+              <text x="250" y="245" font-family="IBM Plex Mono,monospace" font-size="10" stroke="none" fill="#E08A3C">QUALIFIED INTRODUCTION</text>
+            </g>
+            <text x="50" y="300" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">NO INVENTORY HELD</text>
+            <text x="50" y="315" font-family="IBM Plex Mono,monospace" font-size="9" fill="#6E6E68">NO MARGIN TAKEN</text>
+          </svg>
+        </div>
+      </div>
+      <div class="scrolly-steps">
+        <div class="scrolly-step" data-stage="1">
+          <div class="pnum">STEP 01</div>
           <h3>Intake spec</h3>
           <p>Cell format (18650, 4680, pouch), target cycle life, energy density, and BMS
             protection requirements — captured before any vendor is contacted.</p>
         </div>
-      </div>
-      <div class="proc-step reveal">
-        <div class="pnum">STEP 02</div>
-        <div>
+        <div class="scrolly-step" data-stage="2">
+          <div class="pnum">STEP 02</div>
           <h3>Certification &amp; documentation audit</h3>
           <p>UN38.3 transport-safety and IEC 62133 cell-safety test reports, ISO 9001 /
             UL documentation, and factory audit records — verified against the actual
             report, not a claim on a spec sheet.</p>
         </div>
-      </div>
-      <div class="proc-step reveal">
-        <div class="pnum">STEP 03</div>
-        <div>
+        <div class="scrolly-step" data-stage="3">
+          <div class="pnum">STEP 03</div>
           <h3>Sample &amp; cycle-test verification</h3>
           <p>Physical samples checked against claimed cycle life, thermal-runaway margin,
             and — for BMS — protection-circuit accuracy and cell-balancing performance.</p>
         </div>
-      </div>
-      <div class="proc-step reveal">
-        <div class="pnum">STEP 04</div>
-        <div>
+        <div class="scrolly-step" data-stage="4">
+          <div class="pnum">STEP 04</div>
           <h3>Qualified introduction</h3>
           <p>A de-risked handoff to the supplier. No inventory held, no margin taken —
             the engagement is the qualification itself.</p>
@@ -682,7 +626,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
   </div>
 </section>
 
-<!-- ====================== WHAT WE QUALIFY (capabilities) ====================== -->
+<!-- ====================== WHAT WE QUALIFY ====================== -->
 <section id="qualify">
   <div class="shell">
     <div class="sec-head reveal">
@@ -691,102 +635,42 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
       <p><a href="/supplier-qualification-checklist/" class="qual-link">Read the 5-point battery supplier qualification checklist →</a></p>
     </div>
 
-    <div class="qual-list">
-      <div class="qual-row reveal">
-        <div class="qual-icon">
-          <svg viewBox="0 0 100 60" width="72" height="44">
-            <g stroke="#1D4E6B" stroke-width="1.3" fill="#C7DAE2">
-              <rect x="6" y="8" width="16" height="34" rx="4"/>
-              <rect x="10" y="4" width="8" height="6" rx="1.5"/>
-            </g>
-            <g stroke="#1D4E6B" stroke-width="1.3" fill="#C7DAE2">
-              <rect x="34" y="14" width="46" height="26" />
-              <rect x="34" y="14" width="46" height="5" fill="none" stroke-dasharray="2,2"/>
-              <rect x="34" y="35" width="46" height="5" fill="none" stroke-dasharray="2,2"/>
-              <rect x="44" y="8" width="10" height="8"/>
-              <rect x="62" y="8" width="10" height="8"/>
-            </g>
-          </svg>
-        </div>
+    <div class="qual-grid reveal">
+      <div class="qual-card">
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><rect x="3" y="7" width="6" height="12" rx="2"/><rect x="12" y="4" width="9" height="15" rx="2"/></svg></div>
         <h3>Hard-to-find cell &amp; BMS component sourcing</h3>
         <div class="desc">Locate non-catalog 18650, 4680, and pouch cell suppliers, and
           custom BMS components, for small / R&amp;D-volume builds that distributors and
-          marketplaces won't touch.
-          <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a></div>
+          marketplaces won't touch.</div>
+        <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a>
         <div class="tags"><span>R&amp;D volume</span><span>Hardware startups</span></div>
       </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-icon">
-          <svg viewBox="0 0 100 60" width="72" height="44">
-            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
-              <rect x="26" y="6" width="48" height="48" rx="3" fill="#FFFFFF"/>
-              <line x1="34" y1="20" x2="66" y2="20"/>
-              <line x1="34" y1="28" x2="66" y2="28"/>
-              <line x1="34" y1="36" x2="58" y2="36"/>
-              <path d="M34,44 l5,5 l10,-11" stroke="#B5551F" stroke-width="1.6" fill="none"/>
-            </g>
-          </svg>
-        </div>
+      <div class="qual-card">
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9h8M8 13h5M9 17l2 2l4-4"/></svg></div>
         <h3>Battery cell &amp; BMS technical qualification</h3>
         <div class="desc">Vet suppliers on technical merit — cycle life, energy density,
           thermal-runaway margin, protection-circuit accuracy, samples, and certification
           (UN38.3, IEC 62133) — so you don't qualify a broker chain or get burned on a cell
-          that fails in the field.
-          <a href="/services/technical-vendor-qualification/" class="qual-link">Service detail →</a></div>
+          that fails in the field.</div>
+        <a href="/services/technical-vendor-qualification/" class="qual-link">Service detail →</a>
         <div class="tags"><span>Decision-grade</span><span>Cert-verified</span></div>
       </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-icon">
-          <svg viewBox="0 0 100 60" width="72" height="44">
-            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
-              <circle cx="26" cy="30" r="16"/>
-              <path d="M10,30 h32 M26,14 a16,16 0 0 1 0,32 a16,16 0 0 1 0,-32" />
-              <line x1="12" y1="22" x2="40" y2="22"/>
-              <line x1="12" y1="38" x2="40" y2="38"/>
-            </g>
-            <g stroke="#1D4E6B" stroke-width="1.2" stroke-dasharray="2,2">
-              <line x1="46" y1="30" x2="74" y2="18"/>
-            </g>
-            <circle cx="78" cy="15" r="4" fill="#C7DAE2" stroke="#1D4E6B" stroke-width="1.2"/>
-            <text x="78" y="28" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" fill="#54626D">NA</text>
-            <text x="26" y="52" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" fill="#54626D">ASIA</text>
-          </svg>
-        </div>
+      <div class="qual-card">
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18a13 13 0 010-18"/></svg></div>
         <h3>Cross-border cell &amp; BMS sourcing support</h3>
         <div class="desc">Qualified cell and BMS supplier shortlists, overseas-side QC, and
           bilingual negotiation — so North American teams can source battery components
-          globally without the language, distance, and trust barriers.
-          <a href="/services/cross-border-sourcing/" class="qual-link">Service detail →</a></div>
+          globally without the language, distance, and trust barriers.</div>
+        <a href="/services/cross-border-sourcing/" class="qual-link">Service detail →</a>
         <div class="tags"><span>NA manufacturers</span><span>Cross-border</span></div>
       </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-icon">
-          <svg viewBox="0 0 100 60" width="72" height="44">
-            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
-              <rect x="6" y="10" width="34" height="40" rx="3"/>
-              <circle cx="23" cy="26" r="9"/>
-              <line x1="23" y1="26" x2="23" y2="20"/>
-              <line x1="23" y1="26" x2="27" y2="29"/>
-              <line x1="12" y1="44" x2="34" y2="44"/>
-            </g>
-            <g stroke="#B5551F" stroke-width="1.4">
-              <line x1="46" y1="12" x2="72" y2="30" stroke-dasharray="3,2"/>
-              <path d="M69,25 l6,5 l-7,3 z" fill="#B5551F" stroke="none"/>
-            </g>
-            <g stroke="#1D4E6B" stroke-width="1.3" fill="none">
-              <path d="M80,14 h8 v6 l6,16 a3,3 0 0 1 -3,4 h-14 a3,3 0 0 1 -3,-4 l6,-16 z"/>
-              <line x1="77" y1="30" x2="97" y2="30"/>
-            </g>
-          </svg>
-        </div>
+      <div class="qual-card">
+        <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E08A3C" stroke-width="1.6"><rect x="6" y="9" width="9" height="11" rx="1"/><circle cx="10.5" cy="14" r="2.4"/><path d="M17 5l4 4l-9 9l-4 1l1-4z"/></svg></div>
         <h3>Battery test equipment, R&amp;D materials &amp; laser equipment sourcing</h3>
         <div class="desc">Source and qualify battery cyclers and environmental / thermal-safety
           test chambers, small-quantity electrode / electrolyte / separator materials, and laser
-          systems used in battery manufacturing — tab welding and cell-can cutting.
-          <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a></div>
+          systems used in battery manufacturing — tab welding and cell-can cutting.</div>
+        <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a>
         <div class="tags"><span>Lab equipment</span><span>R&amp;D materials</span></div>
       </div>
     </div>
@@ -799,12 +683,12 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
     <div class="why-grid">
       <div class="reveal">
         <div class="sec-label"><span class="idx">03</span><span class="mono">Why independent</span></div>
-        <h2>Independent <em>qualification</em>, not a markup.</h2>
+        <h2>Independent <span class="accent">qualification</span>, not a markup.</h2>
         <p>We don't manufacture cells. We don't stock BMS inventory. The team has built
           battery and grid-storage production lines, so we know which spec actually
           predicts failure, which vendor can really hit cycle-life claims, and what a BMS
           misses under real load. You pay to be right, not just connected.</p>
-        <div class="hero-ctas" style="margin-top:24px;">
+        <div class="hero-ctas" style="margin-top:26px;opacity:1;animation:none;">
           <a href="#contact" class="btn-ghost">Talk to a battery engineer</a>
         </div>
         <p style="margin-top:22px;">
@@ -813,12 +697,12 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
           <a href="/vs/marketplace/" class="qual-link" style="display:inline;">vs a marketplace →</a>
         </p>
       </div>
-      <table class="spec-table reveal">
-        <tr><th>Sourcing scope</th><td>18650 · 4680 · Pouch · Custom BMS</td></tr>
-        <tr><th>Qualification basis</th><td>Cycle life · thermal safety · cert audit</td></tr>
-        <tr><th>Margin held</th><td class="hl">0% — no inventory, no markup</td></tr>
-        <tr><th>Reach</th><td>North America · Asia</td></tr>
-      </table>
+      <div class="spec-card reveal">
+        <div class="spec-row"><span class="k">Sourcing scope</span><span class="v">18650 · 4680 · Pouch · Custom BMS</span></div>
+        <div class="spec-row"><span class="k">Qualification basis</span><span class="v">Cycle life · thermal safety · cert audit</span></div>
+        <div class="spec-row"><span class="k">Margin &amp; inventory held</span><span class="v hl">None — by design</span></div>
+        <div class="spec-row"><span class="k">Reach</span><span class="v">North America · Asia</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -873,15 +757,15 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
         and Asia. When we qualify a cell or BMS vendor, it's on technical merit we earned
         on the factory floor — not a datasheet we forwarded.</p>
     </div>
-    <div class="vm-team">
-      <article class="vm-member reveal">
+    <div class="vm-team reveal">
+      <article class="vm-member">
         <div class="vm-role">Founder</div>
         <h3>Battery &amp; Process Engineering</h3>
         <p>Advanced-manufacturing and cell-process engineer with hands-on battery
           production experience across North America and Asia. MBA; federally funded
           nanomaterials research. Bilingual English/Mandarin.</p>
       </article>
-      <article class="vm-member reveal">
+      <article class="vm-member">
         <div class="vm-role">Co-founder</div>
         <h3>Battery Materials &amp; Qualification</h3>
         <p>Advanced battery materials, testing, and cell selection. Senior
@@ -889,21 +773,21 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
           manufacturers — cell design, failure analysis, and materials screening —
           plus materials characterization in pharma R&amp;D.</p>
       </article>
-      <article class="vm-member reveal">
+      <article class="vm-member">
         <div class="vm-role">Co-founder</div>
         <h3>Cell &amp; Pack Equipment Engineering</h3>
         <p>Manufacturing-equipment expert. Built and ramped advanced cell and pack
           production lines — experience spanning leading EV manufacturers and top-tier
           industrial-equipment firms.</p>
       </article>
-      <article class="vm-member reveal">
+      <article class="vm-member">
         <div class="vm-role">Technical Consultant</div>
         <h3>Process Applications</h3>
         <p>Four decades in industrial and scientific process applications at top-tier
           instrumentation firms — new-application development, process validation, and
           product selection across precision battery-manufacturing systems.</p>
       </article>
-      <article class="vm-member span2 reveal">
+      <article class="vm-member span2">
         <div class="vm-role">Advisor</div>
         <h3>Energy Systems &amp; BMS</h3>
         <p>25+ years in power generation, renewables, and energy management. Microgrid
@@ -921,37 +805,37 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
       <div class="sec-label"><span class="idx">06</span><span class="mono">FAQ</span></div>
       <h2>Battery &amp; BMS sourcing questions, answered.</h2>
     </div>
-    <div class="faq-list">
-      <article class="faq-item reveal">
+    <div class="faq-list reveal">
+      <article class="faq-item">
         <h3>Where can I source 18650, 4680, or pouch cells for a small-volume or R&amp;D build?</h3>
         <p>VoltaMission locates non-catalog and small / R&amp;D-volume cylindrical (18650, 4680)
           and pouch cell suppliers that distributors and marketplaces won't handle — qualifying
           the vendor on technical merit and handing over a de-risked introduction across North
           America and Asia.</p>
       </article>
-      <article class="faq-item reveal">
+      <article class="faq-item">
         <h3>How do you qualify a custom BMS supplier beyond a datasheet?</h3>
         <p>We verify protection-circuit accuracy (over/under-voltage, over-current), cell-balancing
           performance, SOC/SOH estimation quality, and functional-safety documentation against real
           test data and samples — not marketing claims.</p>
       </article>
-      <article class="faq-item reveal">
+      <article class="faq-item">
         <h3>Are you a battery manufacturer or reseller?</h3>
         <p>No. We hold no cell or BMS inventory and take no margin on what we qualify. You pay for
           engineering judgment from people who have built battery and grid-storage production lines.</p>
       </article>
-      <article class="faq-item reveal">
+      <article class="faq-item">
         <h3>What certifications should a battery cell or BMS supplier have?</h3>
         <p>At minimum UN38.3 (transport safety) and IEC 62133 (cell/battery safety); UL 1642, UL 2054,
           or UL 2580 and ISO 9001 depending on application. We verify these against actual test
           reports, not a claim on a spec sheet.</p>
       </article>
-      <article class="faq-item reveal">
+      <article class="faq-item">
         <h3>How do North American teams source cells or BMS from Asia safely?</h3>
         <p>Technically qualified supplier shortlists, overseas-side QC, and bilingual (English /
           Mandarin) negotiation — removing the language, distance, and trust barriers.</p>
       </article>
-      <article class="faq-item reveal">
+      <article class="faq-item">
         <h3>Do you source battery test equipment, R&amp;D materials, or laser equipment too?</h3>
         <p>Yes. Beyond cells and BMS, we source and qualify battery test and lab equipment (cyclers,
           environmental and thermal-safety test chambers), small-quantity R&amp;D battery materials
@@ -964,14 +848,12 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
 
 <!-- ====================== CTA / FOOTER ====================== -->
 <section class="cta" id="contact">
-  <div class="shell cta-grid">
-    <div>
-      <h2 class="reveal">Need engineering eyes on a <em>cell or BMS?</em></h2>
-      <p class="sub reveal">Tell us the cell format or BMS you need to qualify.
-        We respond to qualified inquiries within two business days.</p>
-      <a href="mailto:info@voltamission.com" class="btn-primary reveal">info@voltamission.com →</a>
-      <a href="tel:+19423805666" class="btn-ghost reveal" style="margin-left:12px;">+1 (942) 380-5666</a>
-    </div>
+  <div class="shell">
+    <h2 class="reveal">Need engineering eyes on a <span class="accent">cell or BMS?</span></h2>
+    <p class="sub reveal">Tell us the cell format or BMS you need to qualify.
+      We respond to qualified inquiries within two business days.</p>
+    <a href="mailto:info@voltamission.com" class="btn-primary reveal">info@voltamission.com →</a>
+    <a href="tel:+19423805666" class="btn-ghost reveal" style="margin-left:12px;">+1 (942) 380-5666</a>
   </div>
 </section>
 
@@ -987,6 +869,41 @@ footer{border-top:1px solid var(--line);padding:32px 0;background:var(--paper-3)
 </footer>
 
 <script>
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// nav border on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+
+// hero figure: draw-on + readout count-up, triggered once in view
+const heroFig=document.getElementById('heroFig');
+function countUp(el){
+  const end=parseFloat(el.dataset.target), suf=el.dataset.suffix||'';
+  let t0=null;
+  const step=(t)=>{
+    if(!t0)t0=t;
+    const p=Math.min((t-t0)/1200,1);
+    el.textContent=(end*(1-Math.pow(1-p,3))).toFixed(end%1?2:1)+suf;
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const figIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(!reduceMotion){
+        setTimeout(()=>e.target.querySelectorAll('.js-count').forEach(countUp),900);
+      }else{
+        e.target.querySelectorAll('.js-count').forEach(el=>{el.textContent=el.dataset.target+el.dataset.suffix;});
+      }
+      figIO.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+if(heroFig) figIO.observe(heroFig);
+
+// generic reveal on scroll
 const io=new IntersectionObserver((es)=>{
   es.forEach(e=>{
     if(e.isIntersecting){
@@ -996,6 +913,41 @@ const io=new IntersectionObserver((es)=>{
   });
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// scrollytelling: highlight diagram stage as each step scrolls into focus
+const steps=document.querySelectorAll('.scrolly-step');
+const stages=document.querySelectorAll('.hi');
+const stepIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    const stage=e.target.dataset.stage;
+    if(e.isIntersecting){
+      e.target.classList.add('active');
+      stages.forEach(s=>s.classList.toggle('active', s.dataset.stage===stage));
+    }else{
+      e.target.classList.remove('active');
+    }
+  });
+},{threshold:0.5,rootMargin:'-40% 0px -40% 0px'});
+steps.forEach(s=>stepIO.observe(s));
+
+// magnetic hover on primary buttons
+if(!reduceMotion){
+  document.querySelectorAll('.btn-primary').forEach(btn=>{
+    btn.addEventListener('mousemove',(e)=>{
+      const r=btn.getBoundingClientRect();
+      const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+      btn.style.transform=`translate(${x*0.1}px,${y*0.24}px)`;
+    });
+    btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+  });
+  // ambient glow parallax
+  addEventListener('scroll',()=>{
+    const y=scrollY;
+    document.querySelectorAll('.glow-field span').forEach((s,i)=>{
+      s.style.transform=`translateY(${y*(i?0.06:-0.04)}px)`;
+    });
+  },{passive:true});
+}
 </script>
 </body>
 </html>
