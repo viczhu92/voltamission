@@ -57,26 +57,38 @@
   ]
 }
 </script>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.65;max-width:860px;margin:0 auto;padding:48px 22px;color:#111;background:#fff}
-h1,h2,h3{line-height:1.2}
+:root{--bg:#0A0A0C;--bg-elev:#131316;--line:#252529;--text:#F5F5F2;--muted:#A6A6A0;--accent:#2E96F5;--font-body:'General Sans','Helvetica Neue',sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;}
+*{box-sizing:border-box;}
+body{font-family:var(--font-body);line-height:1.65;max-width:860px;margin:0 auto;padding:0 22px 60px;color:var(--text);background:var(--bg)}
+h1,h2,h3{line-height:1.2;color:var(--text);font-weight:600;}
 h1{font-size:2rem;margin:.2em 0 .3em}
 h2{margin-top:2em}
-a{color:#0645ad}
-.crumb{font-size:.9rem;color:#555}
-.byline{font-size:.85rem;color:#777;margin:0 0 1.4em}
+a{color:var(--accent)}
+.crumb{font-size:.9rem;color:var(--muted)}
+.byline{font-size:.85rem;color:var(--muted);margin:0 0 1.4em}
 .lede{font-size:1.15rem}
-.tldr{border:1px solid #ddd;background:#f7f8fa;border-radius:8px;padding:16px 20px;margin:24px 0}
-.tldr strong{display:block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#555;margin-bottom:6px}
+.tldr{border:1px solid var(--line);background:var(--bg-elev);border-radius:12px;padding:16px 20px;margin:24px 0}
+.tldr strong{display:block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.fact{border-left:4px solid var(--accent);padding-left:16px;background:var(--bg-elev);border-radius:0 12px 12px 0;padding:16px 20px;}
 table{border-collapse:collapse;width:100%;margin:20px 0;font-size:.97rem}
-th,td{border:1px solid #ddd;padding:10px 12px;text-align:left;vertical-align:top}
-th{background:#f2f4f7}
-.related{border-top:1px solid #eee;margin-top:2.5em;padding-top:1.2em}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:var(--bg-elev)}
+.related{border-top:1px solid var(--line);margin-top:2.5em;padding-top:1.2em}
 .related a{display:block;margin:6px 0}
-footer{margin-top:3em;padding-top:1.2em;border-top:1px solid #eee;font-size:.9rem;color:#555}
+footer{margin-top:3em;padding-top:1.2em;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
 </style>
 </head>
 <body>
+<header style="display:flex;align-items:center;gap:10px;padding:26px 0;border-bottom:1px solid #252529;margin-bottom:8px;">
+  <img src="/logo-vm.png" alt="VoltaMission" style="height:24px;" />
+  <span style="font-weight:600;font-size:15px;color:#F5F5F2;">VoltaMission</span>
+  <a href="/" style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#A6A6A0;text-decoration:none;">← Back to home</a>
+</header>
 <main>
 <p class="crumb"><a href="/">VoltaMission home</a> › VoltaMission vs a distributor</p>
 <h1>VoltaMission vs a distributor</h1>
