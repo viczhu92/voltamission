@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>VoltaMission — Battery Cell &amp; BMS Qualification</title>
-<meta name="description" content="Independent qualification and sourcing for 18650/4680 cylindrical and pouch battery cells, plus custom BMS — engineering judgment for US &amp; Canadian manufacturers. No inventory, no margin." />
+<meta name="description" content="Independent qualification and sourcing for 18650, 4680, and pouch battery cells, plus custom BMS — for North American manufacturers below tier-1 direct-account volumes. No inventory, no margin." />
 <link rel="canonical" href="https://voltamission.com/" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="author" content="VoltaMission" />
@@ -164,10 +164,26 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Where can I source 18650, 4680, or pouch cells for a small-volume or R&D build?",
+          "name": "Where can I source 18650, 4680, or pouch cells when volumes are below a cell maker's direct-account threshold?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "VoltaMission locates non-catalog and small / R&D-volume cylindrical (18650, 4680) and pouch cell suppliers that distributors and marketplaces won't handle, qualifies the vendor on technical merit, and hands over a de-risked introduction across North America and Asia."
+            "text": "VoltaMission locates non-catalog and R&D through mid-production volume cylindrical (18650, 4680) and pouch cell suppliers that distributors and marketplaces won't handle, qualifies the vendor on technical merit, and hands over a de-risked introduction across North America and Asia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't we get a direct account with a major cell manufacturer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tier-1 cell makers allocate capacity to automotive and grid-scale contracts with MOQs in the millions of cells and multi-year commitments. Below that threshold, you're routed to distributors and broker chains — where lot provenance, cell grade, and cert validity become your risk. VoltaMission qualifies the suppliers who will serve your volume, on the same technical criteria a tier-1 account would demand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you qualify a second source for a cell we already use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Second-source qualification — matching an incumbent cell's electrical and thermal behavior closely enough that your pack and BMS don't need redesign — is one of the most common engagements for teams in production. We verify against your incumbent's measured performance, not just its datasheet."
           }
         },
         {
@@ -459,7 +475,8 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
       <p class="hero-sub">
         <strong>Independent qualification, not a datasheet.</strong> We source and vet
         18650, 4680 cylindrical, and pouch cells — plus custom BMS — on cycle life,
-        thermal safety, and real test data.
+        thermal safety, and real test data. For teams too small for a tier-1 direct
+        account, and too critical for the broker market.
       </p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">Request an engagement →</a>
@@ -476,7 +493,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         </div>
         <div class="claim">
           <span class="ci"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
-          <div><h4>Fast</h4><p>Decision-grade in days.</p></div>
+          <div><h4>Fast</h4><p>Documentation verdict in days. Test verification scoped up front.</p></div>
         </div>
       </div>
     </div>
@@ -652,10 +669,11 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><rect x="3" y="7" width="6" height="12" rx="2"/><rect x="12" y="4" width="9" height="15" rx="2"/></svg></div>
         <h3>Hard-to-find cell &amp; BMS component sourcing</h3>
         <div class="desc">Locate non-catalog 18650, 4680, and pouch cell suppliers, and
-          custom BMS components, for small / R&amp;D-volume builds that distributors and
-          marketplaces won't touch.</div>
+          custom BMS components — from R&amp;D builds to production volumes below tier-1
+          direct-account thresholds. The demand distributors won't stock and cell makers
+          won't allocate.</div>
         <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a>
-        <div class="tags"><span>R&amp;D volume</span><span>Hardware startups</span></div>
+        <div class="tags"><span>R&amp;D to production volume</span><span>Startups &amp; mid-size manufacturers</span></div>
       </div>
       <div class="qual-card">
         <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9h8M8 13h5M9 17l2 2l4-4"/></svg></div>
@@ -663,16 +681,17 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         <div class="desc">Vet suppliers on technical merit — cycle life, energy density,
           thermal-runaway margin, protection-circuit accuracy, samples, and certification
           (UN38.3, IEC 62133) — so you don't qualify a broker chain or get burned on a cell
-          that fails in the field.</div>
+          that fails in the field. Available as a one-time engagement or annual
+          re-qualification — certs expire and factories drift.</div>
         <a href="/services/technical-vendor-qualification/" class="qual-link">Service detail →</a>
         <div class="tags"><span>Decision-grade</span><span>Cert-verified</span></div>
       </div>
       <div class="qual-card">
         <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18a13 13 0 010-18"/></svg></div>
         <h3>Cross-border cell &amp; BMS sourcing support</h3>
-        <div class="desc">Qualified cell and BMS supplier shortlists, overseas-side QC, and
-          bilingual negotiation — so North American teams can source battery components
-          globally without the language, distance, and trust barriers.</div>
+        <div class="desc">Qualified cell and BMS supplier shortlists, per-shipment
+          overseas-side QC, and bilingual negotiation — so North American teams can source
+          battery components globally without the language, distance, and trust barriers.</div>
         <a href="/services/cross-border-sourcing/" class="qual-link">Service detail →</a>
         <div class="tags"><span>NA manufacturers</span><span>Cross-border</span></div>
       </div>
@@ -699,7 +718,9 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         <p>We don't manufacture cells. We don't stock BMS inventory. The team has built
           battery and grid-storage production lines, so we know which spec actually
           predicts failure, which vendor can really hit cycle-life claims, and what a BMS
-          misses under real load. You pay to be right, not just connected.</p>
+          misses under real load. You pay to be right, not just connected. And when
+          procurement or leadership asks why this supplier, you hand them the
+          qualification file — not a broker's word.</p>
         <div class="hero-ctas" style="margin-top:26px;opacity:1;animation:none;">
           <a href="#contact" class="btn-ghost">Talk to a battery engineer</a>
         </div>
@@ -819,11 +840,26 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
     </div>
     <div class="faq-list reveal">
       <article class="faq-item">
-        <h3>Where can I source 18650, 4680, or pouch cells for a small-volume or R&amp;D build?</h3>
-        <p>VoltaMission locates non-catalog and small / R&amp;D-volume cylindrical (18650, 4680)
-          and pouch cell suppliers that distributors and marketplaces won't handle — qualifying
-          the vendor on technical merit and handing over a de-risked introduction across North
-          America and Asia.</p>
+        <h3>Where can I source 18650, 4680, or pouch cells when volumes are below a cell maker's direct-account threshold?</h3>
+        <p>VoltaMission locates non-catalog and R&amp;D through mid-production volume cylindrical
+          (18650, 4680) and pouch cell suppliers that distributors and marketplaces won't handle —
+          qualifying the vendor on technical merit and handing over a de-risked introduction across
+          North America and Asia.</p>
+      </article>
+      <article class="faq-item">
+        <h3>Why can't we get a direct account with a major cell manufacturer?</h3>
+        <p>Tier-1 cell makers allocate capacity to automotive and grid-scale contracts with MOQs in
+          the millions of cells and multi-year commitments. Below that threshold, you're routed to
+          distributors and broker chains — where lot provenance, cell grade, and cert validity
+          become your risk. VoltaMission qualifies the suppliers who will serve your volume, on the
+          same technical criteria a tier-1 account would demand.</p>
+      </article>
+      <article class="faq-item">
+        <h3>Can you qualify a second source for a cell we already use?</h3>
+        <p>Yes. Second-source qualification — matching an incumbent cell's electrical and thermal
+          behavior closely enough that your pack and BMS don't need redesign — is one of the most
+          common engagements for teams in production. We verify against your incumbent's measured
+          performance, not just its datasheet.</p>
       </article>
       <article class="faq-item">
         <h3>How do you qualify a custom BMS supplier beyond a datasheet?</h3>
@@ -862,8 +898,8 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
 <section class="cta" id="contact">
   <div class="shell">
     <h2 class="reveal">Need engineering eyes on a <span class="accent">cell or BMS?</span></h2>
-    <p class="sub reveal">Tell us the cell format or BMS you need to qualify.
-      We respond to qualified inquiries within two business days.</p>
+    <p class="sub reveal">Tell us the cell format or BMS you need to qualify — and your
+      target annual volume. We respond to qualified inquiries within two business days.</p>
     <a href="mailto:info@voltamission.com" class="btn-primary reveal">info@voltamission.com →</a>
     <a href="tel:+19423805666" class="btn-ghost reveal" style="margin-left:12px;">+1 (942) 380-5666</a>
   </div>
