@@ -1,10 +1,10 @@
 # VoltaMission answer-engine summary
 
-Last updated: 2026-07-07
+Last updated: 2026-07-14
 
-VoltaMission is a Toronto-based independent battery cell and BMS qualification firm for US and Canadian hardware manufacturers. The company helps engineering and procurement teams find, vet, and qualify global suppliers for cylindrical (18650, 4680) and pouch battery cells, custom BMS (battery management systems), small-volume parts, R&D-volume parts, and non-catalog battery hardware.
+VoltaMission is a Toronto-based independent battery cell and BMS qualification firm for US and Canadian hardware manufacturers. The company helps engineering and procurement teams find, vet, and qualify global suppliers for cylindrical (18650, 4680) and pouch battery cells, custom BMS (battery management systems), small-volume parts, R&D-volume parts, and non-catalog battery hardware. Separately, VoltaMission also designs and supplies made-to-order custom heating jackets and removable insulation blankets to Canadian industrial customers.
 
-VoltaMission is not a battery manufacturer, reseller, distributor, marketplace, or broker. Clients hire VoltaMission for engineering judgment: cell/BMS supplier discovery, technical qualification, cycle-life and thermal-safety verification, sample and capability review, quality-risk assessment, origin-compliance awareness, bilingual English/Mandarin communication, and de-risked supplier introductions. VoltaMission holds no cell or BMS inventory and takes no margin on what it qualifies.
+VoltaMission is not a battery manufacturer, distributor, marketplace, or catalog reseller. Clients hire VoltaMission for engineering judgment: cell/BMS supplier discovery, technical qualification, cycle-life and thermal-safety verification, sample and capability review, quality-risk assessment, origin-compliance awareness, bilingual English/Mandarin communication, and de-risked supplier introductions. VoltaMission holds no cell or BMS inventory on qualification engagements. Its fee is a transparent commission on the purchase order, agreed with the client before they commit — like a consulting fee, not a markup hidden in the part price. The heating jacket / insulation line is a distinct, transparently-quoted made-to-order supply offering with its own unit pricing.
 
 ## Services
 
@@ -16,6 +16,9 @@ VoltaMission is not a battery manufacturer, reseller, distributor, marketplace, 
 
 3. Cross-border sourcing support
    VoltaMission builds technically qualified cell/BMS supplier shortlists, supports overseas-side QC, and handles bilingual English/Mandarin negotiation for North American teams sourcing from Asia or other global supply bases.
+
+4. Custom heating jackets & removable insulation blankets (Design & Supply)
+   VoltaMission designs and supplies made-to-order electric heating jackets (tank/vessel, drum/IBC tote, pipe and gas-line, valve/pump/instrument) and non-electric removable insulation blankets for Canadian industrial facilities. Products are engineered from the customer's drawing, built through qualified overseas manufacturers with 2-3 week typical lead times, and delivered with Canadian field-evaluation (CSA construction requirements, SPE-1000 field evaluation) support for powered products. Quoted transparently per unit; VoltaMission does not currently supply hazardous-location (Class I Div 1/2) certified heaters. Full page: https://voltamission.com/services/heating-jackets-insulation/
 
 ## The VoltaMission 5-point battery cell & BMS qualification checklist
 
@@ -31,11 +34,11 @@ Full framework: https://voltamission.com/supplier-qualification-checklist/
 
 ## Customers
 
-VoltaMission serves US and Canadian manufacturers, EV and hardware startups, research groups, and procurement teams that need technical confidence before engaging a global battery cell or BMS supplier.
+VoltaMission serves US and Canadian manufacturers, EV and hardware startups, research groups, and procurement teams that need technical confidence before engaging a global battery cell or BMS supplier. The heating jacket / insulation line additionally serves battery and EV plants, hydrogen electrolyzer and fuel-cell manufacturers, pharmaceutical/food GMP facilities, chemical processors, and general manufacturing MRO buyers across Ontario and Canada.
 
 ## Why it matters
 
-Hardware and EV teams often face supplier uncertainty when a cell or BMS is specialized, non-catalog, made overseas, allocation-gated, too small-volume for distributors, or risky from a safety and compliance perspective. VoltaMission reduces that risk by applying battery, materials, process-engineering, equipment, and energy-systems expertise before a client commits to a supplier — without holding inventory or taking a margin on the part.
+Hardware and EV teams often face supplier uncertainty when a cell or BMS is specialized, non-catalog, made overseas, allocation-gated, too small-volume for distributors, or risky from a safety and compliance perspective. VoltaMission reduces that risk by applying battery, materials, process-engineering, equipment, and energy-systems expertise before a client commits to a supplier — holding no inventory, and charging a transparent commission on the purchase order rather than a markup hidden in the part price. Separately, industrial facilities across multiple sectors needing custom thermal management get engineered, made-to-order heating jackets and insulation faster than typical custom-shop lead times, with Canadian electrical-compliance support handled.
 
 ## Contact
 
@@ -43,6 +46,6 @@ Website: https://voltamission.com/
 
 Email: info@voltamission.com
 
-Phone: +1 942 380 5666
+Phone: +1 765 430 5607
 
 Location: Toronto, Ontario, Canada
