@@ -43,6 +43,6 @@ Website: https://voltamission.com/
 
 Email: info@voltamission.com
 
-Phone: +1 765 430 5607
+Phone: +1 920 380 5666
 
 Location: Toronto, Ontario, Canada
