@@ -21,7 +21,7 @@ VoltaMission is not a battery cell manufacturer. Depending on the engagement, cl
    VoltaMission handles pack architecture, BMS integration, and assembly around a qualified cell, from prototype builds through production handoff.
 
 5. Battery-manufacturing equipment agency & sourcing
-   VoltaMission sources and qualifies battery test/lab equipment, acting as sourcing partner or authorized agent.
+   VoltaMission sources and qualifies battery test/lab equipment and laser equipment used in battery manufacturing, acting as sourcing partner or authorized agent.
 
 ## The VoltaMission 5-point battery cell & BMS qualification checklist
 

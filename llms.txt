@@ -16,7 +16,7 @@
 - Hard-to-find cell & BMS component sourcing: finds non-catalog, allocation-gated, small-volume, and R&D-volume cells or BMS components that distributors and marketplaces often will not handle.
 - Cross-border sourcing support: builds technically qualified cell/BMS supplier shortlists, supports overseas-side QC, and handles bilingual English/Mandarin negotiation for North American hardware teams sourcing globally.
 - Battery pack design & build: pack architecture, BMS integration, and assembly around a qualified cell, from prototype through production handoff.
-- Battery-manufacturing equipment agency & sourcing: sourcing partner or authorized agent for battery test/lab equipment.
+- Battery-manufacturing equipment agency & sourcing: sourcing partner or authorized agent for battery test/lab equipment and laser equipment used in battery manufacturing.
 
 ## Who hires VoltaMission
 - US and Canadian manufacturers qualifying battery cell or BMS suppliers.

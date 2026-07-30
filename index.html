@@ -83,7 +83,8 @@
         "Battery pack design and build",
         "Battery-manufacturing equipment agency and sourcing",
         "Battery test and lab equipment sourcing (cyclers, environmental and thermal-safety chambers)",
-        "Small-quantity battery material sourcing (electrode, electrolyte, separator)"
+        "Small-quantity battery material sourcing (electrode, electrolyte, separator)",
+        "Laser equipment sourcing for battery manufacturing (tab welding, cell-can cutting)"
       ],
       "makesOffer": [
         { "@type": "Offer", "itemOffered": { "@id": "https://voltamission.com/#svc-sourcing" } },
@@ -132,10 +133,10 @@
     {
       "@type": "Service",
       "@id": "https://voltamission.com/#svc-labequip",
-      "serviceType": "Battery test equipment & R&D materials sourcing and agency",
+      "serviceType": "Battery test equipment, R&D materials & laser equipment sourcing and agency",
       "provider": { "@id": "https://voltamission.com/#org" },
       "areaServed": ["North America", "Asia"],
-      "description": "Source and qualify battery test and lab equipment (cyclers, environmental and thermal-safety test chambers) and small-quantity R&D battery materials (electrode, electrolyte, separator) — as sourcing partner or authorized agent, vetted on technical merit, not a catalog listing."
+      "description": "Source and qualify battery test and lab equipment (cyclers, environmental and thermal-safety test chambers), small-quantity R&D battery materials (electrode, electrolyte, separator), and laser equipment used in battery manufacturing (tab welding, cell-can cutting, electrode slitting) — as sourcing partner or authorized agent, vetted on technical merit, not a catalog listing."
     },
     {
       "@type": "WebSite",
@@ -217,7 +218,7 @@
           "name": "Does VoltaMission also design and build battery packs, or act as an equipment agent?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Alongside cell and BMS qualification, VoltaMission handles pack architecture, BMS integration, and assembly through production handoff, and works as a sourcing partner or authorized agent for battery-manufacturing equipment — priced by quote or service fee, depending on the engagement."
+            "text": "Yes. Alongside cell and BMS qualification, VoltaMission handles pack architecture, BMS integration, and assembly through production handoff, and works as a sourcing partner or authorized agent for battery-manufacturing and laser equipment — priced by quote or service fee, depending on the engagement."
           }
         },
         {
@@ -238,10 +239,10 @@
         },
         {
           "@type": "Question",
-          "name": "Do you source battery test equipment or R&D materials too?",
+          "name": "Do you source battery test equipment, R&D materials, or laser equipment too?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Beyond cells and BMS, VoltaMission sources and qualifies battery test and lab equipment (cyclers, environmental and thermal-safety test chambers) and small-quantity R&D battery materials (electrode, electrolyte, separator)."
+            "text": "Yes. Beyond cells and BMS, VoltaMission sources and qualifies battery test and lab equipment (cyclers, environmental and thermal-safety test chambers), small-quantity R&D battery materials (electrode, electrolyte, separator), and laser equipment used in battery manufacturing such as tab welding and cell-can cutting systems."
           }
         }
       ]
@@ -413,6 +414,17 @@ section{padding:130px 0;}
 .spec-row .v.hl{color:var(--accent);}
 @media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:32px;}}
 
+/* ---------- TOOLBOX ---------- */
+.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.tool-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-elev);padding:28px 26px 24px;display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease;}
+.tool-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+.tool-card .tnum{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--accent);}
+.tool-card h3{font-family:var(--font-display);font-weight:600;font-size:18px;margin-top:14px;}
+.tool-card p{margin-top:10px;color:var(--muted);font-size:13.5px;line-height:1.6;flex:1;}
+.tool-card .ttag{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:18px;}
+.tool-launch{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text);display:flex;align-items:center;justify-content:space-between;}
+@media(max-width:760px){.tool-grid{grid-template-columns:1fr;}}
+
 /* ---------- TEAM ---------- */
 .vm-team{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:8px;}
 .vm-member{background:var(--bg-elev);padding:30px;}
@@ -459,6 +471,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
       <a href="#how">How it works</a>
       <a href="#qualify">What we qualify</a>
       <a href="#why">Why independent</a>
+      <a href="#toolbox">Toolbox</a>
       <a href="#team">Team</a>
       <a href="#faq">FAQ</a>
       <a href="#contact" class="nav-cta">Request Engagement</a>
@@ -708,10 +721,11 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
       </div>
       <div class="qual-card">
         <div class="qi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E96F5" stroke-width="1.6"><rect x="6" y="9" width="9" height="11" rx="1"/><circle cx="10.5" cy="14" r="2.4"/><path d="M17 5l4 4l-9 9l-4 1l1-4z"/></svg></div>
-        <h3>Battery test equipment &amp; R&amp;D materials sourcing</h3>
+        <h3>Battery test equipment, R&amp;D materials &amp; laser equipment sourcing</h3>
         <div class="desc">Source and qualify battery cyclers and environmental / thermal-safety
-          test chambers, and small-quantity electrode / electrolyte / separator materials.
-          Available as sourcing partner or authorized agent.</div>
+          test chambers, small-quantity electrode / electrolyte / separator materials, and laser
+          systems used in battery manufacturing — tab welding and cell-can cutting. Available as
+          sourcing partner or authorized agent.</div>
         <a href="/services/hard-to-find-components/" class="qual-link">Service detail →</a>
         <div class="tags"><span>Lab equipment</span><span>Equipment agency</span></div>
       </div>
@@ -763,11 +777,50 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
   </div>
 </section>
 
+<!-- ====================== TOOLBOX ====================== -->
+<section id="toolbox">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="idx">04</span><span class="mono">Toolbox</span></div>
+      <h2>The battery manufacturing toolbox.</h2>
+      <p>Free engineering tools built from real cell production-line experience — proof we
+        know the unit operations behind the cells and packs we qualify, not just the part
+        numbers. No login.</p>
+    </div>
+    <div class="tool-grid">
+      <a class="tool-card reveal" href="/laser-calculator/" target="_blank" rel="noopener">
+        <div class="tnum">TOOL /01</div>
+        <h3>Laser Parameter Calculator</h3>
+        <p>Compute fluence, pulse overlap, and safe process windows for
+          laser tab welding and cell-can cutting.</p>
+        <div class="ttag">Cell Manufacturing · Laser</div>
+        <span class="tool-launch"><span>Launch</span><span>↗</span></span>
+      </a>
+      <a class="tool-card reveal" href="/r2r-sim/" target="_blank" rel="noopener">
+        <div class="tnum">TOOL /02</div>
+        <h3>Speed Match Simulator</h3>
+        <p>Model web speed synchronization across electrode coating
+          and calendering stations.</p>
+        <div class="ttag">Electrode Web Handling</div>
+        <span class="tool-launch"><span>Launch</span><span>↗</span></span>
+      </a>
+      <a class="tool-card reveal" href="/tension-control-sim/" target="_blank" rel="noopener">
+        <div class="tnum">TOOL /03</div>
+        <h3>Tension Control Simulator</h3>
+        <p>Tune electrode and separator web tension loops and visualize
+          stability before the line ever runs.</p>
+        <div class="ttag">Electrode Web Handling</div>
+        <span class="tool-launch"><span>Launch</span><span>↗</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ====================== TEAM ====================== -->
 <section id="team">
   <div class="shell">
     <div class="sec-head reveal">
-      <div class="sec-label"><span class="idx">04</span><span class="mono">Team</span></div>
+      <div class="sec-label"><span class="idx">05</span><span class="mono">Team</span></div>
       <h2>Engineers who've built battery lines, not just sourced for them.</h2>
       <p>Our team has built cell and pack production lines and qualified
         battery materials at battery and grid-storage manufacturers across North America
@@ -812,7 +865,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
 <section id="faq" aria-label="Frequently asked questions">
   <div class="shell">
     <div class="sec-head reveal">
-      <div class="sec-label"><span class="idx">05</span><span class="mono">FAQ</span></div>
+      <div class="sec-label"><span class="idx">06</span><span class="mono">FAQ</span></div>
       <h2>Battery &amp; BMS sourcing questions, answered.</h2>
     </div>
     <div class="faq-list reveal">
@@ -855,7 +908,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
         <h3>Do you also design and build battery packs, or act as an equipment agent?</h3>
         <p>Yes. Alongside cell and BMS qualification, we handle pack architecture, BMS
           integration, and assembly through production handoff, and we work as a sourcing
-          partner or authorized agent for battery-manufacturing equipment — priced
+          partner or authorized agent for battery-manufacturing and laser equipment — priced
           by quote or service fee, depending on the engagement.</p>
       </article>
       <article class="faq-item">
@@ -870,10 +923,11 @@ footer{border-top:1px solid var(--line);padding:36px 0;}
           Mandarin) negotiation — removing the language, distance, and trust barriers.</p>
       </article>
       <article class="faq-item">
-        <h3>Do you source battery test equipment or R&amp;D materials too?</h3>
+        <h3>Do you source battery test equipment, R&amp;D materials, or laser equipment too?</h3>
         <p>Yes. Beyond cells and BMS, we source and qualify battery test and lab equipment (cyclers,
-          environmental and thermal-safety test chambers) and small-quantity R&amp;D battery materials
-          (electrode, electrolyte, separator).</p>
+          environmental and thermal-safety test chambers), small-quantity R&amp;D battery materials
+          (electrode, electrolyte, separator), and laser equipment used in battery manufacturing —
+          tab welding and cell-can cutting systems.</p>
       </article>
     </div>
   </div>
